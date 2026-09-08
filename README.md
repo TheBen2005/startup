@@ -25,4 +25,4 @@ For this deliverable I:
 * I created a compelling elevator pitch
 * Description for key features and overall site flow
 * Description for how I will use each of the technologies
-* A sketch of my application
+* A sketch of my application (to do)
