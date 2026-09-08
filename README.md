@@ -17,7 +17,8 @@
 * **Service**- Registration/login to create new user for those registering and login users by checking if provided information is correct. Tutor endpoint to retrieve tutor information for tutor cards. Available times to retrieve available times for time cards.
 * **DB/login**- Storing contact information securely on account creation including email, phone number, name, username, and password. Also securely storing contact information when booking an appointment to include in email so I can contact them. When I, the tutor login I will be authenticated to view the site from the admin side where I will be able to set my availability. Storing tutor information for tutor cards that will include a name, photo, and the type of test they tutor.
 * **Websocket**- When I edit the available times, that infromation will need to be updated on multiple users screens at once. ALso when a user books an appointment, it should display as booked for them and booked for other users as well
-##Specification Deliverable
+
+## Specification Deliverable
 
 For this deliverable I:
 * Completed all of the prerequisites
