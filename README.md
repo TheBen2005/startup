@@ -1,2 +1,2 @@
-# CS-260
-Website for CS 260
+### Elevator Pitch
+ The SAT/ACT is one of the most important tests students will ever take and it highly contributes to whether a student can attain the future they desire or not. My tutoring site will make it extremely easy for users to book appointments with their tutor. My hope is to save users the familiar pain of having to create an account to book an appointment, although the users will have the option to create a free account.
