@@ -8,3 +8,4 @@
 * After inputting their information, the user will be taken to a page with my Venmo QR code. They can submit my payment there and then click a button confirming their payment.
 * After payment is confirmed, I will receive an email notification (external API) of the booking and will manually verify if they paid. * If they did not I can let them know through the contact information they provided
 * If users create an account, their first name, last name, username, phone number, and password will be stored in the database.
+* Lessons will be given on zoom. I will reach out to the user and send them the zoom information
