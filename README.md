@@ -33,7 +33,7 @@ For this deliverable I:
 
 For this deliverable I:
 * **Rented EC2 server** - I got a t3.nano
-* **Leased a domain name** - My domain can be accessed from [My site link](https://benstutors.com/)
+* **Leased a domain name** - My domain can be accessed from [benstutors.com](https://benstutors.com/)
 * **Learned difference between HTTP and HTTPS** - HTTP requests are sent across the network and a computer in between the browser request and server can intercept this message. HTTPS cleverly encrypts/decrypts the infromation in the request
-* Learned what EC2, elastic Ips, SSH, security groups, caddy, etc.
+* Learned what EC2, elastic Ips, SSH, DNS, security groups, Caddy, and many other concepts involved with setting up my server on AWS.
 
