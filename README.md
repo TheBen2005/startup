@@ -28,3 +28,12 @@ For this deliverable I:
 * Description for key features and overall site flow
 * Description for how I will use each of the technologies
 * A sketch of my application
+
+## AWS deliverable
+
+For this deliverable I:
+* **Rented EC2 server** - I got a t3.nano
+* **Leased a domain name** - My domain can be accessed from [My site link](https://benstutors.com/)
+* **Learned difference between HTTP and HTTPS** - HTTP requests are sent across the network and a computer in between the browser request and server can intercept this message. HTTPS cleverly encrypts/decrypts the infromation in the request
+* Learned what EC2, elastic Ips, SSH, security groups, caddy, etc.
+
