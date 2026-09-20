@@ -84,7 +84,3 @@ Good security habits for authentication
 * Admin/tutor features: add new tutors, set/manage tutor availability across multiple tutors, view student statistics. This will likely growinto its own admin section.
 * Multiple simultaneous tutors, not just me.
 * Adding a link to tutor description on tutor cards
-
-
-
-
