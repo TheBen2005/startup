@@ -48,5 +48,6 @@ For this deliverable I:
 * Database data placeholder include tutor infromation and available times
 * Websockets will be used to display available times live to all users. When one user boks an appointment at a certain time that will be shown on all users screens
 * 3rd Party API call using resend.com to send me an email
-* Deployed my application and the simon subdomain (to do)
+* Deployed my application and the simon subdomain
+* My startup domain can be accessed from [startup.benstutors.com](https://startup.benstutors.com)
 
