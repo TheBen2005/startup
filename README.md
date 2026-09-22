@@ -37,3 +37,16 @@ For this deliverable I:
 * **Learned difference between HTTP and HTTPS** - HTTP requests are sent across the network and a computer in between the browser request and server can intercept this message. HTTPS cleverly encrypts/decrypts the infromation in the request
 * Learned what EC2, elastic Ips, SSH, DNS, security groups, Caddy, and many other concepts involved with setting up my server on AWS.
 
+## HTML deliverable
+
+For this deliverable I:
+* Built out HTML for each page and future components of my application.
+* Properly used HTML tags including nav, footer, header, body, and main.
+* Made full user flow for application with links to take user to correct location on the application
+* Provided all textual content and images for application
+* Provided placeholders for database data, websocket data, login, 3rd party API call, and other future dynamic information. The third party API I will use is likely resend.com
+* Database data placeholder include tutor infromation and available times
+* Websockets will be used to display available times live to all users. When one user boks an appointment at a certain time that will be shown on all users screens
+* 3rd Party API call using resend.com to send me an email
+* Deployed my application and the simon subdomain (to do)
+
