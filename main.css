@@ -1,0 +1,18 @@
+:root {
+    --color-bg: oklch(0.985 0.008 85);
+    --color-text: oklch(0.24 0.012 85);
+    --font-sans: "Schibsted Grotesk";
+}
+
+body{
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
