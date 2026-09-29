@@ -2,6 +2,11 @@
     --color-bg: oklch(0.985 0.008 85);
     --color-text: oklch(0.24 0.012 85);
     --font-sans: "Schibsted Grotesk";
+    --color-btn-secondary-text: oklch(0.45 0.014 85);
+    --color-btn-secondary-border: oklch(0.88 0.012 85);
+    --color-btn-secondary-border-hover: oklch(0.8 0.012 85);
+    --color-btn-secondary-surface-hover: oklch(0.955 0.01 85);
+
 }
 
 body{
@@ -15,4 +20,21 @@ body{
 
 main {
     flex: 1;
+}
+header {
+    padding: 36px 72px
+}
+
+nav {
+    display: flex;
+    align-items: center;
+}
+
+.btn-outline-secondary{
+     --bs-btn-color: var(--color-btn-secondary-text);
+    --bs-btn-border-color: var(--color-btn-secondary-border);
+    --bs-btn-hover-color: var(--color-text);
+    --bs-btn-hover-bg: var(--color-btn-secondary-surface-hover);
+    --bs-btn-hover-border-color: var(--color-btn-secondary-border-hover);
+
 }
