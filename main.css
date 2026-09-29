@@ -43,6 +43,6 @@ nav {
     --bs-btn-active-color: var(--color-text);
     --bs-btn-active-bg: var(--color-bg);
     --bs-btn-active-border-color: var(--color-btn-secondary-border-hover);
-
-
 }
+
+.btn
