@@ -13,6 +13,9 @@
     --color-btn-primary-border-active: oklch(0.36 0.075 158);
     --font-serif: Newsreader;
     --color-tone: oklch(0.47 0.07 158);
+    --color-text-lighter: oklch(0.55 0.012 85);
+    --color-white: oklch(1 0 0);
+
 
 
     
@@ -74,4 +77,8 @@ nav {
     font-weight: 400;
     color: var(--color-tone);
     
+}
+
+footer{
+    text-align: center;
 }

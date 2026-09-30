@@ -15,9 +15,35 @@ main {
     margin-top: 28px;
  }
  .book-button-space{
-    margin-top: 80px
+    margin-top: 80px;
  }
  .book-note-space {
     margin: 0;
-    margin-top: 14px
+    margin-top: 14px;
+    font-size: 14px;
+    color: var(--color-text-lighter);
+ }
+
+ .payment-complete {
+   width: 100%;
+   max-width: 560px;
+
+ }
+
+ .paid-success-color {
+   color: var(--color-text);
+   font-size: 18px;
+ }
+
+ .tutor-contact-message {
+   color: var(--color-text-lighter);
+   font-size: 16px;
+   max-width: 390px;
+ }
+
+ .alert-success {
+   --bs-alert-bg: var(--color-white);
+    --bs-alert-border-color: var(--color-btn-secondary-border);
+    --bs-alert-color: var(--color-text);
+    --bs-alert-border-radius: 18px;
  }
