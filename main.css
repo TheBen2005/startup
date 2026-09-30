@@ -6,7 +6,17 @@
     --color-btn-secondary-border: oklch(0.88 0.012 85);
     --color-btn-secondary-border-hover: oklch(0.8 0.012 85);
     --color-btn-secondary-surface-hover: oklch(0.955 0.01 85);
+    --color-btn-primary-color: oklch(0.42 0.075 158);
+    --color-btn-primary-bg-hover: oklch(0.36 0.075 158);
+    --color-btn-primary-bg-active: oklch(0.36 0.075 158);
+    --color-btn-primary-border-hover: oklch(0.36 0.075 158);
+    --color-btn-primary-border-active: oklch(0.36 0.075 158);
+    --font-serif: Newsreader;
+    --color-tone: oklch(0.47 0.07 158);
 
+
+    
+    
 }
 
 body{
@@ -45,4 +55,23 @@ nav {
     --bs-btn-active-border-color: var(--color-btn-secondary-border-hover);
 }
 
-.btn
+.btn-primary{
+    --bs-btn-color: var(--color-bg);
+    --bs-btn-bg: var(--color-btn-primary-color);
+    --bs-btn-border-color: var(--color-btn-primary-color);
+    --bs-btn-active-color: var(--color-bg);
+    --bs-btn-active-bg: var(--color-btn-primary-bg-active);
+    --bs-btn-active-border-color: var(--color-btn-primary-border-active);
+    --bs-btn-hover-bg: var(--color-btn-primary-bg-hover);
+    --bs-btn-hover-color: var(--color-bg);
+    --bs-btn-hover-border-color: var(--color-btn-primary-border-hover);
+
+}
+
+.title-italics{
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-tone);
+    
+}

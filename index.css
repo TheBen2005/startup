@@ -2,3 +2,7 @@ main {
     gap: 28px;
     text-align: center;
 }
+ h1 {
+    font-size: 64px;
+    max-width: 16ch;
+ }
