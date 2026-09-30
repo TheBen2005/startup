@@ -113,3 +113,8 @@ footer{
     --bs-card-border-color: var(--color-btn-secondary-border);
 
 }
+
+form {
+    width: 100%;
+    max-width: 480px
+}

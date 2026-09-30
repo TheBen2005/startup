@@ -36,11 +36,11 @@
         <main>
             <!-- This message below saying "Monday Sep 22 at 1:00pm with Ben 1 hour", will be dynamic and based on the tutor, time selected, and date -->
             <p class="booking-summary">Monday Sep 22 at 1:00 PM with Ben 1 hour</p>
-            <h1>Your <span>details</span></h1>
+            <h1>Your <span class="title-italics">details</span></h1>
             <form method="get" action="payment.html">
                 <div>
-                <label for="firstName">First name</label>
-                <input type="text" placeholder="Ben" id="firstName" name="firstName" />
+                <label for="firstName" class="form-label">First name</label>
+                <input type="text" placeholder="Ben" id="firstName" name="firstName" class="form-control" />
                 </div>
                 <div>
                 <label for="lastName">Last name</label>
@@ -55,7 +55,7 @@
                 <input type="tel" placeholder="555-652-9282" id="number" name="number"/>
                 </div>
                 <p>Only used for appointment reminders.</p> 
-                <button type="submit">Continue to payment</button>
+                <button type="submit" class="btn btn-primary btn-lg rounded-pill book-button-space w-100">Continue to payment</button>
             </form>
         
         </main>
