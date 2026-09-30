@@ -1,0 +1,77 @@
+
+main {
+
+    text-align: center;
+}
+
+
+
+h1 {
+    font-size: 64px;
+    max-width: 16ch;
+    margin: 0;
+ }
+
+ .intro-text{
+    font-size: 20px;
+    max-width: 44ch;
+    color: var(--color-secondary-text);
+    margin: 0;
+    margin-top: 12px;
+    margin-bottom: 48px
+ }
+ .card{
+    text-align: left;
+    padding: 16px;
+    width: 100%;
+    max-width: 300px;
+    text-decoration: none;
+    color: var(--color-text);
+    --bs-card-border-radius: 20px;
+     transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+ }
+
+ .card-img-top {
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 12px;
+ }
+
+ .card-title{
+    color: var(--color-text-back-link-hover);
+    
+ }
+
+ .tutor-list {
+    display: grid;
+    gap: 24px;
+
+ }
+
+ .tutor-space {
+    margin-top: 12px
+ }
+
+ .card-text {
+    font-size: 28px;
+    margin-top: -12px;
+    color: var(--color-btn-primary-color)
+ }
+
+ .sat-score {
+    font-size: 16px;
+    color: var(--color-text-lighter);
+ }
+
+ .card-title {
+    margin-top: 16px;
+    font-size: 28px;
+    color: var(--color-text);
+ }
+
+ .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 12px 12px 32px oklch(0.24 0.012 85 / 0.09);
+    border-color: var(--color-border-accent);
+    color: var(--color-text);
+}
