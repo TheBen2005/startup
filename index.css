@@ -1,8 +1,23 @@
 main {
-    gap: 28px;
+
     text-align: center;
 }
  h1 {
     font-size: 64px;
     max-width: 16ch;
+    margin: 0;
+ }
+ .intro-text{
+    font-size: 20px;
+    max-width: 48ch;
+    color: var(--color-secondary-text);
+    margin: 0;
+    margin-top: 28px;
+ }
+ .book-button-space{
+    margin-top: 80px
+ }
+ .book-note-space {
+    margin: 0;
+    margin-top: 14px
  }
