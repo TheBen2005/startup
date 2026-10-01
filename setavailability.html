@@ -46,69 +46,69 @@
         </header>
         <main>
             <!-- IMPORTANT. When the tutor updates times, that infrmation is updated in the database and reflected on users screens when they are choosing times for a tutor in real time. Also, when a user books a time that infromation is updated in the database and displayed on this page -->
-            <h1>Set my <span>availability</span></h1>
-            <p>Tap a time to open or close it. Students only see the times you leave open.</p>
-            <ul>
+            <h1>Set my <span class="title-italics">availability</span></h1>
+            <p class="intro-text">Tap a time to open or close it. Students only see the times you leave open.</p>
+            <ul class="day-list">
                 <li>
-                    <button>Mon <span>22</span></button>
+                    <button type="button" class="day-pill" aria-pressed="true">Mon <span>22</span></button>
                 </li>
                 <li>
-                    <button>Tue <span>23</span></button>
+                    <button type="button" class="day-pill" aria-pressed="false">Tue <span>23</span></button>
                 </li>
                 <li>
-                    <button>Wed <span>24</span></button>
+                    <button type="button" class="day-pill" aria-pressed="false">Wed <span>24</span></button>
                 </li>
                 <li>
-                    <button>Thu <span>25</span></button>
+                    <button type="button" class="day-pill" aria-pressed="false">Thu <span>25</span></button>
                 </li>
                 <li>
-                    <button>Fri <span>26</span></button>
-                </li>
-            </ul>
-            <h2>Monday, September 22</h2>
-            <p>4 times open 1 booked</p>
-            <ul>
-                <li>
-                    <button>8:00 AM<span> Closed</span></button>
-                </li>
-                <li>
-                    <button>9:00 AM<span> Open</span></button>
-                </li>
-                <li>
-                    <p>10:00AM <span>booked Jordan L</span></p>
-                </li>
-                <li>
-                    <button>11:00 AM<span> Open</span></button>
-                </li>
-                <li>
-                    <button>12:00 PM<span> Closed</span></button>
-                </li>
-                <li>
-                    <button>1:00 PM<span> Closed</span></button>
-                </li>
-                <li>
-                    <button>2:00 PM<span> Closed</span></button>
-                </li>
-                <li>
-                    <button>3:00 PM<span> Open</span></button>
-                </li>
-                <li>
-                    <button>4:00 PM<span> Open</span></button>
-                </li>
-                <li>
-                    <button>5:00 PM<span> Closed</span></button>
-                </li>
-                <li>
-                    <button>6:00 PM<span> Closed</span></button>
-                </li>
-                <li>
-                    <button>7:00 PM<span> Closed</span></button>
-                </li>
-                <li>
-                    <button>8:00 PM<span> Closed</span></button>
+                    <button type="button" class="day-pill" aria-pressed="false">Fri <span>26</span></button>
                 </li>
             </ul>
-            <button>Save</button>
+            <h2 class="day-header">Monday, September 22</h2>
+            <p class="open-count">4 times open 1 booked</p>
+            <ul class="slot-list">
+                <li>
+                    <button type="button" class="slot">8:00 AM<span> Closed</span></button>
+                </li>
+                <li>
+                    <button type="button" class="slot">9:00 AM<span> Open</span></button>
+                </li>
+                <li>
+                    <p class="slot-taken"><s>10:00AM</s> booked Jordan L</p>
+                </li>
+                <li>
+                    <button type="button" class="slot">11:00 AM<span> Open</span></button>
+                </li>
+                <li>
+                    <button type="button" class="slot">12:00 PM<span> Closed</span></button>
+                </li>
+                <li>
+                    <button type="button" class="slot">1:00 PM<span> Closed</span></button>
+                </li>
+                <li>
+                    <button type="button" class="slot">2:00 PM<span> Closed</span></button>
+                </li>
+                <li>
+                    <button type="button" class="slot">3:00 PM<span> Open</span></button>
+                </li>
+                <li>
+                    <button type="button" class="slot">4:00 PM<span> Open</span></button>
+                </li>
+                <li>
+                    <button type="button" class="slot">5:00 PM<span> Closed</span></button>
+                </li>
+                <li>
+                    <button type="button" class="slot">6:00 PM<span> Closed</span></button>
+                </li>
+                <li>
+                    <button type="button" class="slot">7:00 PM<span> Closed</span></button>
+                </li>
+                <li>
+                    <button type="button" class="slot">8:00 PM<span> Closed</span></button>
+                </li>
+            </ul>
+            <button class="btn btn-primary rounded-pill book-button-space">Save</button>
         
         </main>
         <footer>
