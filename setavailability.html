@@ -23,20 +23,20 @@
         />
         <link
             rel="stylesheet" 
-            href="tutors.css"
+            href="setavailability.css"
         />
     </head>
     <body>
         <header>
             <nav>
-                <details>
-                    <summary>Ben</summary>
+                <details class="ms-auto">
+                    <summary class="btn btn-outline-secondary rounded-pill">Ben</summary>
                     <ul>
                         <li>
-                            <a href="index.html">Home</a>
+                            <a href="index.html" class="back-link">Home</a>
                         </li>
                         <li>
-                            <button type="submit">Log out</button>
+                            <button class="btn btn-primary rounded-pill book-button-space">Log out</button>
                         </li>
                 
                     </ul>
@@ -69,46 +69,46 @@
             <p class="open-count">4 times open 1 booked</p>
             <ul class="slot-list">
                 <li>
-                    <button type="button" class="slot">8:00 AM<span> Closed</span></button>
+                    <button type="button" class="slot" aria-pressed="false">8:00 AM<span> Closed</span></button>
                 </li>
                 <li>
-                    <button type="button" class="slot">9:00 AM<span> Open</span></button>
+                    <button type="button" class="slot" aria-pressed="true">9:00 AM<span> Open</span></button>
                 </li>
                 <li>
-                    <p class="slot-taken"><s>10:00AM</s> booked Jordan L</p>
+                    <p class="slot-taken" aria-pressed="true"> 10:00AM booked Jordan </p>
                 </li>
                 <li>
-                    <button type="button" class="slot">11:00 AM<span> Open</span></button>
+                    <button type="button" class="slot" aria-pressed="true">11:00 AM<span> Open</span></button>
                 </li>
                 <li>
-                    <button type="button" class="slot">12:00 PM<span> Closed</span></button>
+                    <button type="button" class="slot" aria-pressed="false">12:00 PM<span> Closed</span></button>
                 </li>
                 <li>
-                    <button type="button" class="slot">1:00 PM<span> Closed</span></button>
+                    <button type="button" class="slot" aria-pressed="false">1:00 PM<span> Closed</span></button>
                 </li>
                 <li>
-                    <button type="button" class="slot">2:00 PM<span> Closed</span></button>
+                    <button type="button" class="slot" aria-pressed="false">2:00 PM<span> Closed</span></button>
                 </li>
                 <li>
-                    <button type="button" class="slot">3:00 PM<span> Open</span></button>
+                    <button type="button" class="slot" aria-pressed="true">3:00 PM<span> Open</span></button>
                 </li>
                 <li>
-                    <button type="button" class="slot">4:00 PM<span> Open</span></button>
+                    <button type="button" class="slot" aria-pressed="true">4:00 PM<span> Open</span></button>
                 </li>
                 <li>
-                    <button type="button" class="slot">5:00 PM<span> Closed</span></button>
+                    <button type="button" class="slot" aria-pressed="false">5:00 PM<span> Closed</span></button>
                 </li>
                 <li>
-                    <button type="button" class="slot">6:00 PM<span> Closed</span></button>
+                    <button type="button" class="slot" aria-pressed="false">6:00 PM<span> Closed</span></button>
                 </li>
                 <li>
-                    <button type="button" class="slot">7:00 PM<span> Closed</span></button>
+                    <button type="button" class="slot" aria-pressed="false">7:00 PM<span> Closed</span></button>
                 </li>
                 <li>
-                    <button type="button" class="slot">8:00 PM<span> Closed</span></button>
+                    <button type="button" class="slot" aria-pressed="false">8:00 PM<span> Closed</span></button>
                 </li>
             </ul>
-            <button class="btn btn-primary rounded-pill book-button-space">Save</button>
+            <button type="button" class="btn btn-primary rounded-pill save-button">Save</button>
         
         </main>
         <footer>

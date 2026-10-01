@@ -32,3 +32,7 @@ h1 {
    font-size: 16px;
    max-width: 390px;
  }
+
+ #selection-bar {
+    margin-top: 32px;
+}

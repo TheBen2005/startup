@@ -23,3 +23,15 @@ h1 {
     font-weight: 500;
     color: var(--color-text-lighter);
 }
+
+.slot[aria-pressed="false"] {
+    border-style: dashed;
+    background-color: transparent;
+    color: var(--color-text-lighter);
+}
+
+.save-button {
+    width: 100%;
+    max-width: 320px;
+    margin-top: 28px;
+}
