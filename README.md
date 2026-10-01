@@ -59,4 +59,4 @@ For this deliverable I:
 * I used both flexbox and grid to arrange elements side by side and on top of one another. I also made sure to make elements responsive to windox resizing. One example of this is my card class which is set to fill the width to the width of its parent on smaller screens, and 300 pixles on bigger ones. I also made elements responsive to window resizing on my time slot grids which fill as many elements 140 pixels wide in a row that can be fit in a row and move to the next line when the row space is filled.
 * I used two imported fonts: Schibsted Grotesk and Newsreader
 * I used every each of the types of selectors including elements, classes, an Id, pseudo selectors. AN example of an element I used is body and footer. One example of a class I used is .slot. I used Id once in the selection bar for the alert tag that opens after a user chooses a time.
-* My startup domain can be accessed from (to do)
+* My startup domain can be accessed from [startup.benstutors.com](https://startup.benstutors.com/index.html)
