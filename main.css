@@ -105,7 +105,7 @@ footer{
     padding: 7px 14px;
     font-size: 14px;
     color: var(--color-secondary-text);
-    margin: 0;
+    margin-top: 12px;
 }
 
 .card {
