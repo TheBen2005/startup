@@ -7,7 +7,7 @@ export function Times() {
             <header>
                 <nav>
                     <NavLink to="/tutors" className="back-link">tutors</NavLink>
-                    <Link to="/login" className="btn btn-outline-secondary rounded-pill ms-auto">Login/Register</Link>
+                    <NavLink to="/login" className="btn btn-outline-secondary rounded-pill ms-auto">Login/Register</NavLink>
                 </nav>
             </header>
             <main>
