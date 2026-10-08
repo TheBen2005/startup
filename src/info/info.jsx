@@ -10,7 +10,7 @@ export function Info() {
                     <NavLink to="/login" className="btn btn-outline-secondary rounded-pill ms-auto">Login/Register</NavLink>
                 </nav>
             </header>
-            <main>
+            <main className='info-main'>
                 {/* This message below saying "Monday Sep 22 at 1:00pm with Ben 1 hour", will be dynamic and based on the tutor, time selected, and date */}
                 <p className="booking-summary">Monday Sep 22 at 1:00 PM with Ben 1 hour</p>
                 <h1>Your <span className="title-italics">details</span></h1>

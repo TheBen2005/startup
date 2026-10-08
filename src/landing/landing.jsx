@@ -10,7 +10,7 @@ export function Landing() {
                 </nav>
             </header>
 
-            <main>
+            <main className="landing-main">
                 <div className="alert alert-success alert-dismissible text-start payment-complete" role="status">
                     <p className="paid-success-color">You paid successfully!</p>
                     <p className="tutor-contact-message ">Your tutor will contact you directly with your Zoom session details</p>
