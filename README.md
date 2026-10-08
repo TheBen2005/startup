@@ -60,3 +60,10 @@ For this deliverable I:
 * I used two imported fonts: Schibsted Grotesk and Newsreader
 * I used every each of the types of selectors including elements, classes, an Id, pseudo selectors. AN example of an element I used is body and footer. One example of a class I used is .slot. I used Id once in the selection bar for the alert tag that opens after a user chooses a time.
 * My startup domain can be accessed from [startup.benstutors.com](https://startup.benstutors.com/index.html)
+
+## React Phase 1: Routing deliverable
+For this deliverable I:
+* Completed all prerequisites including completing the Simon React routing and deploying it, and understanding vite, Node.js, and all of the other prerequisites for this deliverable
+* Bundled using Vite
+* **Components**- I have 8 components made for each of my pages. I have the info, landing, login, payment, setavailability, signup, times, and tutors each as their own individual components
+* **Router**- I have my routing set up in app.jsx. The routers routes the body of the page to use the correct component based on the URL path and I have a route for each of my 8 components and a route for a URL path that is not recognized.
