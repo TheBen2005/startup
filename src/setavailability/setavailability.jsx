@@ -3,7 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 
 export function SetAvailability() {
     return (
-        <div>
+        <>
             <header>
                 <nav>
                     <details className="ms-auto">
@@ -88,6 +88,6 @@ export function SetAvailability() {
                 <button type="button" className="btn btn-primary rounded-pill save-button">Save</button>
 
             </main>
-        </div>
+        </>
     );
 }

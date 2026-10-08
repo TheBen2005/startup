@@ -3,7 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 
 export function Payment() {
     return (
-        <div>
+        <>
             <header>
                 <nav>
                     <NavLink to="/info" className="back-link">details</NavLink>
@@ -28,6 +28,6 @@ export function Payment() {
 
 
             </main>
-        </div>
+        </>
     );
 }

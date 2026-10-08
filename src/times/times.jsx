@@ -3,7 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 
 export function Times() {
     return (
-        <div>
+        <>
             <header>
                 <nav>
                     <NavLink to="/tutors" className="back-link">tutors</NavLink>
@@ -13,7 +13,7 @@ export function Times() {
             <main>
                 {/* This message below saying "with Ben 1 hour", will be dynamic and based on the tutor and the amount of time selected */}
                 <p className="booking-summary">With Ben 1 hour</p>
-                <h1>Select a <span className="title-italics">time</span></h1>
+                <h1 className="times-h1">Select a <span className="title-italics">time</span></h1>
                 <ul className="day-list">
                     <li>
                         <button type="button" className="day-pill" aria-pressed="true">Mon <span>22</span></button>
@@ -60,6 +60,6 @@ export function Times() {
                 </div>
 
             </main>
-        </div>
+        </>
     );
 }

@@ -3,7 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 
 export function Login() {
     return (
-        <div>
+        <>
             <header>
                 <nav>
                     <NavLink to="/" className="back-link">home</NavLink>
@@ -15,11 +15,11 @@ export function Login() {
                 <form method="get" action="/setavailability">
                     {/* Currently logging in sends the user to the set availability page. In the future, users who are not tutors will be taken to the home page with their name on the top right, while tutors will be taken to this page. */}
                     <div>
-                        <label for="email" className="form-label">Email address</label>
+                        <label htmlFor="email" className="form-label">Email address</label>
                         <input type="email" placeholder="example.email@outlook.com" id="email" name="email" className="form-control" />
                     </div>
                     <div>
-                        <label for="password" className="form-label">Password</label>
+                        <label htmlFor="password" className="form-label">Password</label>
                         <input type="password" placeholder="********" id="password" name="password" className="form-control" />
                     </div>
                     <button type="submit" className="btn btn-primary btn-lg rounded-pill book-button-space w-100">Log in</button>
@@ -28,6 +28,6 @@ export function Login() {
 
 
             </main>
-        </div>
+        </>
     );
 }

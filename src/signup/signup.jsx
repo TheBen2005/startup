@@ -3,7 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 
 export function Signup() {
     return (
-        <div>
+        <>
             <header>
                 <nav>
                     <NavLink to="/" className="back-link">home</NavLink>
@@ -14,19 +14,19 @@ export function Signup() {
                 <p className="intro-text">Sign up with first name, last name, email and password.</p>
                 <form method="get" action="/">
                     <div>
-                        <label for="firstName" className="form-label">First name</label>
+                        <label htmlFor="firstName" className="form-label">First name</label>
                         <input type="text" placeholder="Ben" id="firstName" name="firstName" className="form-control" />
                     </div>
                     <div>
-                        <label for="lastName" className="form-label">Last name</label>
-                        <input type="text" placeholder="Myers" id="lastName" name="lastName" class="form-control" />
+                        <label htmlFor="lastName" className="form-label">Last name</label>
+                        <input type="text" placeholder="Myers" id="lastName" name="lastName" className="form-control" />
                     </div>
                     <div>
-                        <label for="email" className="form-label">Email address</label>
+                        <label htmlfor="email" className="form-label">Email address</label>
                         <input type="email" placeholder="example.email@outlook.com" id="email" name="email" className="form-control" />
                     </div>
                     <div>
-                        <label for="password" className="form-label">Password</label>
+                        <label htmlfor="password" className="form-label">Password</label>
                         <input type="password" placeholder="********" id="password" name="password" className="form-control" />
                     </div>
                     <button type="submit" className="btn btn-primary btn-lg rounded-pill book-button-space w-100">Sign Up</button>
@@ -34,6 +34,6 @@ export function Signup() {
                 <p className="have-account"> Already have an account?<span><Link to="/login" className="log-in-link"> Login</Link></span></p>
 
             </main>
-        </div>
+        </>
     );
 }

@@ -3,7 +3,7 @@ import{NavLink, Link } from 'react-router-dom';
 
 export function Landing() {
     return (
-        <div>
+        <>
             <header>
                 <nav>
                     <NavLink to="/login" className="btn btn-outline-secondary rounded-pill ms-auto">Login/Register</NavLink>
@@ -11,7 +11,7 @@ export function Landing() {
             </header>
 
             <main className="landing-main">
-                <div className="alert alert-success alert-dismissible text-start payment-complete" role="status">
+                <div className="alert alert-success-landing alert-dismissible text-start payment-complete" role="status">
                     <p className="paid-success-color">You paid successfully!</p>
                     <p className="tutor-contact-message ">Your tutor will contact you directly with your Zoom session details</p>
                     <button type="button" className="btn-close" aria-label="Dismiss"></button>
@@ -22,7 +22,7 @@ export function Landing() {
                 <Link to="/tutors" className="btn btn-primary rounded-pill book-button-space">Book Appointment</Link>
                 <p className="book-note-space">No account needed to book appointment</p>
             </main>
-        </div>
+        </>
     );
 
 }

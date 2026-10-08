@@ -3,7 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 
 export function Tutors() {
     return (
-        <div>
+        <>
             <header>
                 <nav>
                     <NavLink to="/" className="back-link">Back</NavLink>
@@ -17,27 +17,27 @@ export function Tutors() {
                 <ul className="tutor-list">
                     <li className="tutor-space">
                         <Link to="/times" className="card">
-                            <img src="/public/suitimage.jpg" className="card-img-top" alt="Ben" />
+                            <img src="/suitimage.jpg" className="card-img-top" alt="Ben" />
                             <h2 className="card-title">Ben</h2>
                             <p className="card-text">1390 <span className="sat-score">SAT</span></p>
                         </Link>
                     </li>
                     <li className="tutor-space">
                         <Link to="/times" className="card">
-                            <img src="/public/suitimage.jpg" className="card-img-top" alt="Ben" />
+                            <img src="/suitimage.jpg" className="card-img-top" alt="Ben" />
                             <h2 className="card-title">Ben</h2>
                             <p className="card-text">1390 <span className="sat-score">SAT</span></p>
                         </Link>
                     </li>
                     <li className="tutor-space">
                         <Link to="/times" className="card">
-                            <img src="/public/suitimage.jpg" className="card-img-top" alt="Ben" />
+                            <img src="/suitimage.jpg" className="card-img-top" alt="Ben" />
                             <h2 className="card-title">Ben</h2>
                             <p className="card-text">1390 <span className="sat-score">SAT</span></p>
                         </Link>
                     </li>
                 </ul>
             </main>
-        </div>
+        </>
     );
 }
