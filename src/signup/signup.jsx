@@ -22,11 +22,11 @@ export function Signup() {
                         <input type="text" placeholder="Myers" id="lastName" name="lastName" className="form-control" />
                     </div>
                     <div>
-                        <label htmlfor="email" className="form-label">Email address</label>
+                        <label htmlFor="email" className="form-label">Email address</label>
                         <input type="email" placeholder="example.email@outlook.com" id="email" name="email" className="form-control" />
                     </div>
                     <div>
-                        <label htmlfor="password" className="form-label">Password</label>
+                        <label htmlFor="password" className="form-label">Password</label>
                         <input type="password" placeholder="********" id="password" name="password" className="form-control" />
                     </div>
                     <button type="submit" className="btn btn-primary btn-lg rounded-pill book-button-space w-100">Sign Up</button>

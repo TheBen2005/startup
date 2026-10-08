@@ -65,5 +65,5 @@ For this deliverable I:
 For this deliverable I:
 * Completed all prerequisites including completing the Simon React routing and deploying it, and understanding vite, Node.js, and all of the other prerequisites for this deliverable
 * Bundled using Vite
-* **Components**- I have 8 components made for each of my pages. I have the info, landing, login, payment, setavailability, signup, times, and tutors each as their own individual components
+* **Components**- I have 8 components made for each of my pages. I have the info, landing, login, payment, setavailability, signup, times, and tutors each as their own individual components. Each of these components import their own CSS file and bootstrap is also imported on app.jsx
 * **Router**- I have my routing set up in app.jsx. The routers routes the body of the page to use the correct component based on the URL path and I have a route for each of my 8 components and a route for a URL path that is not recognized.

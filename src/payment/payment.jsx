@@ -17,7 +17,7 @@ export function Payment() {
                 <p className="intro-text">Scan the code with your phone's camera, send the amount below, then tap I paid.</p>
                 {/* DATABASE DATA PLACEHOLDER. The image displaying the venmo qr code will eventually be pulled from the database for the venmo of the correct tutor rather than being hard coded.*/}
                 <div className="card payment-card">
-                    <img src="public/QRcode.png" className="qr-code" alt="qr code for @ben-tutoring" />
+                    <img src="QRcode.png" className="qr-code" alt="qr code for @ben-tutoring" />
                     <p className="money-amount">$60</p>
                     <p className="where-payment">to @ben-tutoring</p>
                 </div>
