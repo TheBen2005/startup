@@ -67,4 +67,4 @@ For this deliverable I:
 * Bundled using Vite
 * **Components**- I have 8 components made for each of my pages. I have the info, landing, login, payment, setavailability, signup, times, and tutors each as their own individual components. Each of these components import their own CSS file and bootstrap is also imported on app.jsx
 * **Router**- I have my routing set up in app.jsx. The routers routes the body of the page to use the correct component based on the URL path and I have a route for each of my 8 components and a route for a URL path that is not recognized.
-* * My startup domain can be accessed from [startup.benstutors.com](https://startup.benstutors.com/)
+* My startup domain can be accessed from [startup.benstutors.com](https://startup.benstutors.com/)
