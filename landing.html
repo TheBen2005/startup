@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>
+            Ben's Tutoring Site
+        </title>
+        <link rel="icon" href="images/favicon.ico"/>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+            crossorigin="anonymous"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600&family=Newsreader:ital@0;1&display=swap"
+            rel="stylesheet"
+        />
+        <link 
+            rel="stylesheet" 
+            href="main.css"
+        />
+        <link
+            rel="stylesheet" 
+            href="index.css"
+        />
+
+    </head>
+    <body>
+        <header>
+            <nav>
+            <a href="login.html" class="btn btn-outline-secondary rounded-pill ms-auto">Login/Register</a>
+            </nav>
+        </header>
+        <main>
+            <div class="alert alert-success alert-dismissible text-start payment-complete" role="status">
+                <p class="paid-success-color">You paid successfully!</p>
+                <p class="tutor-contact-message ">Your tutor will contact you directly with your Zoom session details</p>
+                <button type="button" class="btn-close" aria-label="Dismiss"></button>
+            </div>
+            <!-- This will be displayed after the user presses the button confirming they paid. This will not be displayed all of the time but only briefly after the user confirms their payment. They will be able to close this message using the x button -->
+            <h1>Ben's Tutoring <span class="title-italics">ACT/SAT</span></h1>
+            <p class="intro-text">Book an appointment almost instantly and together we will achieve your goals on the ACT/SAT</p>
+            <a href="tutors.html" class="btn btn-primary rounded-pill book-button-space">Book Appointment</a>
+            <p class="book-note-space">No account needed to book appointment</p>
+        </main>
+        <footer>
+            <p>Ben Myers</p>
+            <a href="https://github.com/TheBen2005/startup">Ben's Github</a>
+        </footer>
+
+    </body>
+</html>
