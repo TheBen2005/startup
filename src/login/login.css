@@ -1,29 +1,31 @@
-h1 {
+
+
+.login-main h1 {
     font-size: 48px;
     max-width: 16ch;
     margin: 0;
  }
- .intro-text{
+ .login-main .intro-text{
     color: var(--color-text-lighter);
  }
 
 
-.btn-primary {
+ .login-main .btn-primary {
     margin-top: 24px;
 
 }
 
-.need-account{
+ .login-main .need-account{
     margin-top: 24px;
     color: var(--color-text-lighter);
 }
 
-.sign-up-link{
+ .login-main .sign-up-link{
     color: var(--color-btn-primary-color);
     text-decoration: none;
 }
 
-.sign-up-link:hover{
+.login-main .sign-up-link:hover{
     color: var(--color-text-back-link-hover);
     
 }

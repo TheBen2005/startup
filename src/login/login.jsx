@@ -9,7 +9,7 @@ export function Login() {
                     <NavLink to="/" className="back-link">home</NavLink>
                 </nav>
             </header>
-            <main>
+            <main className="login-main">
                 <h1>Welcome <span className="title-italics">back</span></h1>
                 <p className="intro-text">Log in with your email and password.</p>
                 <form method="get" action="/setavailability">

@@ -3,13 +3,13 @@
     text-align: center;
 }
 
-.payment-h1 {
+.payment-main .payment-h1 {
     font-size: 64px;
     max-width: 16ch;
     margin-top: 12px;
  }
 
- .intro-text{
+ .payment-main .intro-text{
     font-size: 20px;
     max-width: 44ch;
     color: var(--color-secondary-text);
@@ -18,7 +18,7 @@
     margin-bottom: 48px
  }
 
- .payment-card {
+ .payment-main .payment-card {
     align-items: center;
     gap: 22px;
     padding: 26px;
@@ -26,25 +26,25 @@
     max-width: 480px;
  }
 
- .qr-code {
+ .payment-main .qr-code {
     width: 210px;
     height: 210px;
     object-fit: contain;
 }
 
-.money-amount {
+.payment-main .money-amount {
     font-size: 48px;
     font-family: var(--font-serif);
 
 }
 
-.where-payment {
+.payment-main .where-payment {
     margin-top: -36px;
     color: var(--color-text-lighter);
 
 }
 
-.payment-form {
+.payment-main .payment-form {
     width: 100%;
     max-width: 480px;
     margin-top: 28px;

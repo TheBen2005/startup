@@ -1,10 +1,10 @@
-.times-h1 {
+.times-main .times-h1 {
     font-size: 48px;
     max-width: 16ch;
     margin: 0;
  }
 
- .slot-taken {
+ .times-main .slot-taken {
     margin: 0;
     padding: 16px 12px;
     border: 1px dashed var(--color-btn-secondary-border);
@@ -15,24 +15,24 @@
     color: var(--color-text-lighter);
 }
 
-.alert-success {
+.times-main .alert-success {
    --bs-alert-bg: var(--color-white);
     --bs-alert-border-color: var(--color-btn-secondary-border);
     --bs-alert-color: var(--color-text);
     --bs-alert-border-radius: 18px;
  }
 
-  .paid-success-color {
+ .times-main .paid-success-color {
    color: var(--color-text);
    font-size: 18px;
  }
 
- .tutor-contact-message {
+ .times-main .tutor-contact-message {
    color: var(--color-text-lighter);
    font-size: 16px;
    max-width: 390px;
  }
 
- #selection-bar {
+ .times-main #selection-bar {
     margin-top: 32px;
 }

@@ -1,21 +1,21 @@
-.have-account{
+.signup-main .have-account{
     margin-top: 24px;
     color: var(--color-text-lighter);
 }
-.log-in-link{
+.signup-main .log-in-link{
     color: var(--color-btn-primary-color);
     text-decoration: none;
 }
 
-.log-in-link:hover{
+.signup-main .log-in-link:hover{
     color: var(--color-text-back-link-hover);
     
 }
 
-.btn-primary {
+.signup-main .btn-primary {
     margin-top: 24px;
 
 }
-.intro-text{
+.signup-main .intro-text{
     color: var(--color-text-lighter);
  }

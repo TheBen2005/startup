@@ -9,7 +9,7 @@ export function Signup() {
                     <NavLink to="/" className="back-link">home</NavLink>
                 </nav>
             </header>
-            <main>
+            <main className="signup-main">
                 <h1>Create your <span className="title-italics">account</span></h1>
                 <p className="intro-text">Sign up with first name, last name, email and password.</p>
                 <form method="get" action="/">

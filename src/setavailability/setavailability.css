@@ -1,10 +1,10 @@
-.set-availability-h1 {
+.set-availability-main .set-availability-h1 {
     font-size: 48px;
     max-width: 16ch;
     margin: 0;
  }
 
-  .intro-text{
+.set-availability-main .intro-text{
     font-size: 20px;
     max-width: 44ch;
     color: var(--color-secondary-text);
@@ -13,7 +13,7 @@
     margin-bottom: 48px
  }
 
-  .slot-taken {
+.set-availability-main .slot-taken {
     margin: 0;
     padding: 16px 12px;
     border: 1px dashed var(--color-btn-secondary-border);
@@ -24,13 +24,13 @@
     color: var(--color-text-lighter);
 }
 
-.slot[aria-pressed="false"] {
+.set-availability-main .slot[aria-pressed="false"] {
     border-style: dashed;
     background-color: transparent;
     color: var(--color-text-lighter);
 }
 
-.save-button {
+.set-availability-main .save-button {
     width: 100%;
     max-width: 320px;
     margin-top: 28px;

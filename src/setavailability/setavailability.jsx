@@ -21,7 +21,7 @@ export function SetAvailability() {
                 </nav>
                 { /* IMPORTANT. This is the page that I, the tutor will only have access too. I will be authenticated and will have access to edit my times. The name displayed in the top is currentlly hard coded to be Ben but will be dynamic based on the information the user logged in with. Non-tutors will be logged in and returned to the home page while authenticated tutors are taken to this page. After loggin in, both the tutors and the users can click their name in the top and log out */ }
             </header>
-            <main>
+            <main className="set-availability-main">
                 { /* IMPORTANT. When the tutor updates times, that infrmation is updated in the database and reflected on users screens when they are choosing times for a tutor in real time. Also, when a user books a time that infromation is updated in the database and displayed on this page */ }
                 <h1 className="set-availability-h1">Set my <span className ="title-italics">availability</span></h1>
                 <p className="intro-text">Tap a time to open or close it. Students only see the times you leave open.</p>

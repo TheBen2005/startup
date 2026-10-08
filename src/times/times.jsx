@@ -10,7 +10,7 @@ export function Times() {
                     <NavLink to="/login" className="btn btn-outline-secondary rounded-pill ms-auto">Login/Register</NavLink>
                 </nav>
             </header>
-            <main>
+            <main className="times-main">
                 {/* This message below saying "with Ben 1 hour", will be dynamic and based on the tutor and the amount of time selected */}
                 <p className="booking-summary">With Ben 1 hour</p>
                 <h1 className="times-h1">Select a <span className="title-italics">time</span></h1>
