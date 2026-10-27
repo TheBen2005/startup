@@ -1,5 +1,7 @@
+import React from 'react';
 import './tutors.css';
 import { NavLink, Link } from 'react-router-dom';
+import {TutorCard} from './tutorcard';
 
 function getTutors() {
     const tutors = [{id: 1, name: 'Ben', score: 1390, test: 'SAT', image: '/suitimage.jpg'},
@@ -11,6 +13,13 @@ function getTutors() {
 }
 
 export function Tutors() {
+    const [tutors, setTutors] = React.useState([]);
+
+    React.useEffect(() => {
+        const tutorsResult = getTutors();
+        setTutors(tutorsResult);
+    }, []);
+    
     return (
         <>
             <header>
@@ -24,27 +33,12 @@ export function Tutors() {
                 <h1>Choose your <span className="title-italics">tutor</span></h1>
                 <p className="intro-text">Pick who you'd like to work with and we'll show you their open times.</p>
                 <ul className="tutor-list">
-                    <li className="tutor-space">
-                        <Link to="/times" className="card">
-                            <img src="/suitimage.jpg" className="card-img-top" alt="Ben" />
-                            <h2 className="card-title">Ben</h2>
-                            <p className="card-text">1390 <span className="sat-score">SAT</span></p>
-                        </Link>
-                    </li>
-                    <li className="tutor-space">
-                        <Link to="/times" className="card">
-                            <img src="/suitimage.jpg" className="card-img-top" alt="Ben" />
-                            <h2 className="card-title">Ben</h2>
-                            <p className="card-text">1390 <span className="sat-score">SAT</span></p>
-                        </Link>
-                    </li>
-                    <li className="tutor-space">
-                        <Link to="/times" className="card">
-                            <img src="/suitimage.jpg" className="card-img-top" alt="Ben" />
-                            <h2 className="card-title">Ben</h2>
-                            <p className="card-text">1390 <span className="sat-score">SAT</span></p>
-                        </Link>
-                    </li>
+                    {tutors.map((tutor) => (
+                        <li key={tutor.id} className='tutor-space'>
+                            <TutorCard name = {tutor.name} score = {tutor.score} image = {tutor.image} test = {tutor.test}/>
+                        </li>
+                    ))}
+                
                 </ul>
             </main>
         </>
