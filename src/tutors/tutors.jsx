@@ -1,6 +1,15 @@
 import './tutors.css';
 import { NavLink, Link } from 'react-router-dom';
 
+function getTutors() {
+    const tutors = [{id: 1, name: 'Ben', score: 1390, test: 'SAT', image: '/suitimage.jpg'},
+        {id: 2, name: 'Matt', score: 34, test: 'ACT', image: '/suitimage.jpg'}
+
+    ];
+    return tutors;
+
+}
+
 export function Tutors() {
     return (
         <>
