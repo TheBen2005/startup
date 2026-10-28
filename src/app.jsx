@@ -14,6 +14,7 @@ import { Info } from './info/info';
 export default function App() {
     const [selectedTutor, setSelectedTutor] = React.useState(null);
     const [selectedSlot, setSelectedSlot] = React.useState(null);
+    const [contactInfo, setContactInfo] = React.useState(null);
 
     return (
         <div className='body'>
@@ -24,9 +25,9 @@ export default function App() {
                     <Route path="/times" element={<Times tutor={selectedTutor} onSelectSlot = {setSelectedSlot}/>} exact />
                     <Route path="/signup" element={<Signup />} exact />
                     <Route path="/setavailability" element={<SetAvailability />} exact />
-                    <Route path="/payment" element={<Payment />} exact />
+                    <Route path="/payment" element={<Payment tutor={selectedTutor} slot={selectedSlot} contactInfo={contactInfo}/>} exact />
                     <Route path="/login" element={<Login />} exact />
-                    <Route path="/info" element={<Info tutor={selectedTutor} slot={selectedSlot}/>} exact />
+                    <Route path="/info" element={<Info tutor={selectedTutor} slot={selectedSlot} onSubmitInfo={setContactInfo}/>} exact />
                     <Route path='*' element={<NotFound />} />
                 </Routes>
                 <footer>

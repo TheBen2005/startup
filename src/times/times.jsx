@@ -74,7 +74,7 @@ export function Times({ tutor, onSelectSlot }) {
                 {selectedTime &&<div id="selection-bar" className="alert alert-success alert-dismissible text-start payment-complete" role="status">
                     <p className="paid-success-color">{chosenDay.title} at {selectedTime}</p>
                     <p className="tutor-contact-message">60 minutes with {tutorName}</p>
-                    <Link to="/info" className="btn btn-primary rounded-pill book-button-space" on Click={() => onSelectSlot({ day: chosenDay.title, time: selectedTime})}>Continue</Link>
+                    <Link to="/info" className="btn btn-primary rounded-pill book-button-space" onClick={() => onSelectSlot({ day: chosenDay.title, time: selectedTime})}>Continue</Link>
                     {/* This eventually won't be present all of the time, but is a dynamic message that will appear at the bottom after a time is selected. */}
                 </div>}
 
