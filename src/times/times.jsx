@@ -11,7 +11,7 @@ function getDays(tutorId){
 
 }
 
-export function Times({ tutor }) {
+export function Times({ tutor, onSelectSlot }) {
     const [days, setDays] = React.useState([]);
     const [selectedDayID, setSelectedDayID] = React.useState(null);
     const [selectedTime, setSelectedTime] = React.useState(null);
@@ -66,7 +66,7 @@ export function Times({ tutor }) {
                 {chosenDay &&<ul className="slot-list">
                     {chosenDay.times.map((time) => 
                         <li key={time}>
-                            <button type='button' className='slot' aria-pressed={time === selectedTime} onClick={() => setSelectedTime(time)}>{time}</button>
+                            <button type='button' className='slot' aria-pressed={time === selectedTime} onClick={() => {setSelectedTime(time)}}>{time}</button>
                         </li>
                     
                     )}
@@ -74,7 +74,7 @@ export function Times({ tutor }) {
                 {selectedTime &&<div id="selection-bar" className="alert alert-success alert-dismissible text-start payment-complete" role="status">
                     <p className="paid-success-color">{chosenDay.title} at {selectedTime}</p>
                     <p className="tutor-contact-message">60 minutes with {tutorName}</p>
-                    <Link to="/info" className="btn btn-primary rounded-pill book-button-space">Continue</Link>
+                    <Link to="/info" className="btn btn-primary rounded-pill book-button-space" on Click={() => onSelectSlot({ day: chosenDay.title, time: selectedTime})}>Continue</Link>
                     {/* This eventually won't be present all of the time, but is a dynamic message that will appear at the bottom after a time is selected. */}
                 </div>}
 

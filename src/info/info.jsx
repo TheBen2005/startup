@@ -1,7 +1,11 @@
 import './info.css';
 import { NavLink, Link } from 'react-router-dom';
 
-export function Info() {
+export function Info({tutor, slot}) {
+    let tutorName = '';
+    if(tutor){
+        tutorName = tutor.name;
+    }
     return (
         <>
             <header>
@@ -12,7 +16,7 @@ export function Info() {
             </header>
             <main className='info-main'>
                 {/* This message below saying "Monday Sep 22 at 1:00pm with Ben 1 hour", will be dynamic and based on the tutor, time selected, and date */}
-                <p className="booking-summary">Monday Sep 22 at 1:00 PM with Ben 1 hour</p>
+                <p className="booking-summary">{slot} at 1:00 PM with {tutorName} 1 hour</p>
                 <h1>Your <span className="title-italics">details</span></h1>
                 <form method="get" action="/payment">
                     <div>
