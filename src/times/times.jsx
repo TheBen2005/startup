@@ -1,7 +1,31 @@
+import React from 'react';
 import './times.css';
 import { NavLink, Link } from 'react-router-dom';
 
+function getDays(tutorId){
+    const availability = [{id: 1, day: 'Wed', date: 28, title: 'Wednesday, October 28', times : ['9:00 AM', '10:00 AM', '1:00 PM', '2:00 PM']},
+        {id: 2, day: 'Thu', date: 29, title: 'Thursday, October 29', times : ['9:00 AM', '10:00 AM', '1:00 PM', '4:00 PM']}
+        ];
+        return availability;
+
+
+}
+
 export function Times() {
+    const [days, setDays] = React.useState([]);
+    const [selectedDayID, setSelectedDayID] = React.useState(null);
+    
+
+
+    React.useEffect(() => {
+        const daysResult = getDays(1);
+        setDays(daysResult);
+        if(daysResult[0] != null){
+            setSelectedDayID(daysResult[0].id);
+        }
+    }, []);
+    const chosenDay = days.find((day) => day.id === selectedDayID);
+    const numTimesOpen = chosenDay.length;
     return (
         <>
             <header>
@@ -15,43 +39,23 @@ export function Times() {
                 <p className="booking-summary">With Ben 1 hour</p>
                 <h1 className="times-h1">Select a <span className="title-italics">time</span></h1>
                 <ul className="day-list">
-                    <li>
-                        <button type="button" className="day-pill" aria-pressed="true">Mon <span>22</span></button>
-                    </li>
-                    <li>
-                        <button type="button" className="day-pill" aria-pressed="false">Tue <span>23</span></button>
-                    </li>
-                    <li>
-                        <button type="button" className="day-pill" aria-pressed="false">Wed <span>24</span></button>
-                    </li>
-                    <li>
-                        <button type="button" className="day-pill" aria-pressed="false">Thu <span>25</span></button>
-                    </li>
-                    <li>
-                        <button type="button" className="day-pill" aria-pressed="false">Fri <span>26</span></button>
-                    </li>
+                    {days.map((day) => (
+                        <li key={day.id}>
+                            <button type='button' className='day-pill' aria-pressed={day.id === selectedDayID} onClick={() => setSelectedDayID(day.id)}>{day.day} <span>{day.date}</span></button>
+                        </li>
+                    ))}
                 </ul>
-                <h2 className="day-header">Monday, September 22</h2>
+                {chosenDay &&<h2 className="day-header">{chosenDay.title}</h2>}
                 <p className="open-count">4 times open</p>
                 {/* DATABASE DATA PLACEHOLDER. All of these times will be eventually available times for the tutor that are fetched from the database. */}
-                <ul className="slot-list">
-                    <li>
-                        <button type="button" className="slot">9:00 AM</button>
-                    </li>
-                    <li>
-                        <p className="slot-taken"><s>Taken 10:00 AM</s></p>
-                        {/* IMPORTANT: WEBSOCKETPLACEHOLDER. When one user books an appointment at a time it will update for all users. */}
-                    </li>
-                    <li>
-                        <button type="button" className="slot">11:00 AM</button>
-                    </li>
-                    <li>
-                        <button type="button" className="slot">3:00 PM</button>
-                    </li>
-                    <li>
-                        <button type="button" className="slot">4:00 PM</button>
-                    </li>
-                </ul>
+                {chosenDay &&<ul className="slot-list">
+                    {chosenDay.times.map((time) => 
+                        <li key={time}>
+                            <button type='button' className='slot'>{time}</button>
+                        </li>
+                    
+                    )}
+                </ul>}
                 <div id="selection-bar" className="alert alert-success alert-dismissible text-start payment-complete" role="status">
                     <p className="paid-success-color">Monday, September 22 at 9:00 AM</p>
                     <p className="tutor-contact-message">60 minutes with Ben</p>
