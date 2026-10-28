@@ -3,7 +3,7 @@ import './times.css';
 import { NavLink, Link } from 'react-router-dom';
 
 function getDays(tutorId){
-    const availability = [{id: 1, day: 'Wed', date: 28, title: 'Wednesday, October 28', times : ['9:00 AM', '10:00 AM', '1:00 PM', '2:00 PM']},
+    const availability = [{id: 1, day: 'Wed', date: 28, title: 'Wednesday, October 28', times : ['9:00 AM', '10:00 AM', '1:00 PM', '2:00 PM', '6:00 PM']},
         {id: 2, day: 'Thu', date: 29, title: 'Thursday, October 29', times : ['9:00 AM', '10:00 AM', '1:00 PM', '4:00 PM']}
         ];
         return availability;
@@ -15,6 +15,7 @@ export function Times() {
     const [days, setDays] = React.useState([]);
     const [selectedDayID, setSelectedDayID] = React.useState(null);
     
+    
 
 
     React.useEffect(() => {
@@ -25,7 +26,15 @@ export function Times() {
         }
     }, []);
     const chosenDay = days.find((day) => day.id === selectedDayID);
-    const numTimesOpen = chosenDay.length;
+    let numTimes = 0;
+    if(chosenDay){
+        numTimes = chosenDay.times.length;
+    }
+    let time = 'times';
+    if(numTimes === 1){
+        time = 'time';
+    }
+
     return (
         <>
             <header>
@@ -46,7 +55,7 @@ export function Times() {
                     ))}
                 </ul>
                 {chosenDay &&<h2 className="day-header">{chosenDay.title}</h2>}
-                <p className="open-count">4 times open</p>
+                <p className="open-count">{numTimes} {time} open</p>
                 {/* DATABASE DATA PLACEHOLDER. All of these times will be eventually available times for the tutor that are fetched from the database. */}
                 {chosenDay &&<ul className="slot-list">
                     {chosenDay.times.map((time) => 
