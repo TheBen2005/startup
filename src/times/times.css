@@ -36,3 +36,10 @@
  .times-main #selection-bar {
     margin-top: 32px;
 }
+
+.times-main .slot[aria-pressed="true"]{
+   background-color: var(--color-btn-primary-color);
+    border-color: var(--color-btn-primary-color);
+    color: var(--color-bg);
+
+}

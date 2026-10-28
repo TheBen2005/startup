@@ -12,13 +12,15 @@ import { Login } from './login/login';
 import { Info } from './info/info';
 
 export default function App() {
+    const [selectedTutor, setSelectedTutor] = React.useState(null);
+
     return (
         <div className='body'>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Landing />} exact />
-                    <Route path="/tutors" element={<Tutors />} exact />
-                    <Route path="/times" element={<Times />} exact />
+                    <Route path="/tutors" element={<Tutors onSelectTutor={setSelectedTutor} />} exact />
+                    <Route path="/times" element={<Times tutor={selectedTutor}/>} exact />
                     <Route path="/signup" element={<Signup />} exact />
                     <Route path="/setavailability" element={<SetAvailability />} exact />
                     <Route path="/payment" element={<Payment />} exact />

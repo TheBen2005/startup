@@ -12,7 +12,7 @@ function getTutors() {
 
 }
 
-export function Tutors() {
+export function Tutors({ onSelectTutor }) {
     const [tutors, setTutors] = React.useState([]);
 
     React.useEffect(() => {
@@ -35,7 +35,7 @@ export function Tutors() {
                 <ul className="tutor-list">
                     {tutors.map((tutor) => (
                         <li key={tutor.id} className='tutor-space'>
-                            <TutorCard name = {tutor.name} score = {tutor.score} image = {tutor.image} test = {tutor.test}/>
+                            <TutorCard name = {tutor.name} score = {tutor.score} image = {tutor.image} test = {tutor.test} onSelect={() => onSelectTutor(tutor)}/>
                         </li>
                     ))}
                 
