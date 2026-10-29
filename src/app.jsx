@@ -22,12 +22,12 @@ export default function App() {
         <div className='body'>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<Landing paid={justPaid} onJustPaid={setJustPaid}/>} exact />
-                    <Route path="/tutors" element={<Tutors onSelectTutor={setSelectedTutor} />} exact />
-                    <Route path="/times" element={<Times tutor={selectedTutor} onSelectSlot = {setSelectedSlot}/>} exact />
+                    <Route path="/" element={<Landing paid={justPaid} onJustPaid={setJustPaid} user={user} onLogout={setUser}/>} exact />
+                    <Route path="/tutors" element={<Tutors onSelectTutor={setSelectedTutor} onLogout={setUser} user={user}/>} exact />
+                    <Route path="/times" element={<Times tutor={selectedTutor} onSelectSlot = {setSelectedSlot} onLogout={setUser} user={user}/>} exact />
                     <Route path="/signup" element={<Signup onSignUp={setUser}/>} exact />
-                    <Route path="/setavailability" element={<SetAvailability />} exact />
-                    <Route path="/payment" element={<Payment tutor={selectedTutor} slot={selectedSlot} contactInfo={contactInfo} onPaid={() => setJustPaid(true)}/>} exact />
+                    <Route path="/setavailability" element={<SetAvailability user={user} onLogout={setUser}/>} exact />
+                    <Route path="/payment" element={<Payment tutor={selectedTutor} slot={selectedSlot} contactInfo={contactInfo} onPaid={() => setJustPaid(true)} onLogout={setUser} user={user}/>} exact />
                     <Route path="/login" element={<Login onLogin={setUser}/>} exact />
                     <Route path="/info" element={<Info tutor={selectedTutor} slot={selectedSlot} onSubmitInfo={setContactInfo}/>} exact />
                     <Route path='*' element={<NotFound />} />

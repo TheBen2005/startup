@@ -1,23 +1,13 @@
 import './setavailability.css';
 import { NavLink, Link } from 'react-router-dom';
+import { AccountButton } from '../components/accountbutton';
 
-export function SetAvailability() {
+export function SetAvailability(user, onLogout) {
     return (
         <>
             <header>
                 <nav>
-                    <details className="ms-auto">
-                        <summary className="btn btn-outline-secondary rounded-pill">Ben</summary>
-                        <ul>
-                            <li>
-                                <NavLink to="/" className="back-link">Home</NavLink>
-                            </li>
-                            <li>
-                                <button className="btn btn-primary rounded-pill book-button-space">Log out</button>
-                            </li>
-
-                        </ul>
-                    </details>
+                    <AccountButton user={user} logout={onLogout}/>
                 </nav>
                 { /* IMPORTANT. This is the page that I, the tutor will only have access too. I will be authenticated and will have access to edit my times. The name displayed in the top is currentlly hard coded to be Ben but will be dynamic based on the information the user logged in with. Non-tutors will be logged in and returned to the home page while authenticated tutors are taken to this page. After loggin in, both the tutors and the users can click their name in the top and log out */ }
             </header>

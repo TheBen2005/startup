@@ -1,3 +1,4 @@
+import { AccountButton } from '../components/accountbutton';
 import React from 'react';
 import './tutors.css';
 import { NavLink, Link } from 'react-router-dom';
@@ -12,7 +13,7 @@ function getTutors() {
 
 }
 
-export function Tutors({ onSelectTutor }) {
+export function Tutors({ onSelectTutor, onLogout, user }) {
     const [tutors, setTutors] = React.useState([]);
 
     React.useEffect(() => {
@@ -25,7 +26,7 @@ export function Tutors({ onSelectTutor }) {
             <header>
                 <nav>
                     <NavLink to="/" className="back-link">Back</NavLink>
-                    <NavLink to="/login" className="btn btn-outline-secondary rounded-pill ms-auto">Login/Register</NavLink>
+                    <AccountButton user={user} logout={onLogout}/>
                 </nav>
             </header>
             <main className='tutors-main'>

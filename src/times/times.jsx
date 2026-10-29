@@ -1,3 +1,4 @@
+import { AccountButton } from '../components/accountbutton';
 import React from 'react';
 import './times.css';
 import { NavLink, Link } from 'react-router-dom';
@@ -11,7 +12,7 @@ function getDays(tutorId){
 
 }
 
-export function Times({ tutor, onSelectSlot }) {
+export function Times({ tutor, onSelectSlot, onLogout, user }) {
     const [days, setDays] = React.useState([]);
     const [selectedDayID, setSelectedDayID] = React.useState(null);
     const [selectedTime, setSelectedTime] = React.useState(null);
@@ -40,13 +41,17 @@ export function Times({ tutor, onSelectSlot }) {
         tutorName = tutor.name;
 
     }
+    let linkString = '/info';
+    if(user){
+        linkString = '/payment';
+    }
 
     return (
         <>
             <header>
                 <nav>
                     <NavLink to="/tutors" className="back-link">tutors</NavLink>
-                    <NavLink to="/login" className="btn btn-outline-secondary rounded-pill ms-auto">Login/Register</NavLink>
+                    <AccountButton user={user} logout={onLogout}/>
                 </nav>
             </header>
             <main className="times-main">
@@ -74,7 +79,7 @@ export function Times({ tutor, onSelectSlot }) {
                 {selectedTime &&<div id="selection-bar" className="alert alert-success alert-dismissible text-start payment-complete" role="status">
                     <p className="paid-success-color">{chosenDay.title} at {selectedTime}</p>
                     <p className="tutor-contact-message">60 minutes with {tutorName}</p>
-                    <Link to="/info" className="btn btn-primary rounded-pill book-button-space" onClick={() => onSelectSlot({ day: chosenDay.title, time: selectedTime})}>Continue</Link>
+                    <Link to={linkString} className="btn btn-primary rounded-pill book-button-space" onClick={() => onSelectSlot({ day: chosenDay.title, time: selectedTime})}>Continue</Link>
                     {/* This eventually won't be present all of the time, but is a dynamic message that will appear at the bottom after a time is selected. */}
                 </div>}
 

@@ -1,13 +1,14 @@
+import { AccountButton } from '../components/accountbutton';
 import './landing.css';
 import{NavLink, Link } from 'react-router-dom';
 import { Banner } from './banner';
 
-export function Landing({ paid, onJustPaid }) {
+export function Landing({ paid, onJustPaid, user, onLogout }) {
     return (
         <>
             <header>
                 <nav>
-                    <NavLink to="/login" className="btn btn-outline-secondary rounded-pill ms-auto">Login/Register</NavLink>
+                    <AccountButton user={user} logout={onLogout}/>
                 </nav>
             </header>
 

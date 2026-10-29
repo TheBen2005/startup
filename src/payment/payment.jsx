@@ -1,8 +1,9 @@
 import React from 'react';
 import './payment.css';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { AccountButton } from '../components/accountbutton';
 
-export function Payment({ tutor, slot, contactInfo, onPaid}) {
+export function Payment({ tutor, slot, contactInfo, onPaid, onLogout, user}) {
     const [paymentStatus, setPaymentStatus] = React.useState(false)
     let paymentMessageButton = 'I paid';
     let tutorName = '';
@@ -36,13 +37,19 @@ export function Payment({ tutor, slot, contactInfo, onPaid}) {
         onPaid();
         navigate('/');
     }
+    let linkString = '/info';
+    let linkMessage = 'details';
+    if(user){
+        linkString = '/times'
+        linkMessage = 'times'
+    }
 
     return (
         <>
             <header>
                 <nav>
-                    <NavLink to="/info" className="back-link">details</NavLink>
-                    <NavLink to="/login" className="btn btn-outline-secondary rounded-pill ms-auto">Login/Register</NavLink>
+                    <NavLink to={linkString} className="back-link">{linkMessage}</NavLink>
+                    <AccountButton user={user} logout={onLogout}/>
                 </nav>
             </header>
             <main className="payment-main">

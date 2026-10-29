@@ -1,6 +1,8 @@
 import {Link} from 'react-router-dom';
 
 export function TutorCard({name, score, image, test, onSelect}){
+    
+
     return (
         <Link to="/times" className="card" onClick={onSelect}>
             <img src={image} className="card-img-top" alt={name} />
