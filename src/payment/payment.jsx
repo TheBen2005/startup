@@ -8,6 +8,7 @@ export function Payment({ tutor, slot, contactInfo, onPaid}) {
     let tutorName = '';
     let slotDay = '';
     let slotTime = '';
+    const navigate = useNavigate();
     if(tutor){
         tutorName = tutor.name;
         
@@ -27,14 +28,15 @@ export function Payment({ tutor, slot, contactInfo, onPaid}) {
         return new Promise((resolve) => {
             setTimeout(resolve, 1600);
         });
-
-        async function handlePaid() {
-            setPaymentStatus(true);
-            await sendPaymentEmail({ tutor, slot, contactInfo });
-            onPaid();
-            navigate('/');
-}
     }
+
+    async function handlePaid() {
+        setPaymentStatus(true);
+        await sendPaymentEmail({ tutor, slot, contactInfo });
+        onPaid();
+        navigate('/');
+    }
+
     return (
         <>
             <header>
@@ -55,7 +57,7 @@ export function Payment({ tutor, slot, contactInfo, onPaid}) {
                     <p className="where-payment">to @ben-tutoring</p>
                 </div>
                 <div className="payment-form">
-                    <button type="button" className="btn btn-primary btn-lg rounded-pill book-button-space w-100" disabled={paymentStatus} onClick={() => setPaymentStatus(true)}>{paymentMessageButton}</button>
+                    <button type="button" className="btn btn-primary btn-lg rounded-pill book-button-space w-100" disabled={paymentStatus} onClick={handlePaid}>{paymentMessageButton}</button>
                 </div>
                 
 

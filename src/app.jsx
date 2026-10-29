@@ -12,6 +12,7 @@ import { Login } from './login/login';
 import { Info } from './info/info';
 
 export default function App() {
+    const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
     const [selectedTutor, setSelectedTutor] = React.useState(null);
     const [selectedSlot, setSelectedSlot] = React.useState(null);
     const [contactInfo, setContactInfo] = React.useState(null);
@@ -21,7 +22,7 @@ export default function App() {
         <div className='body'>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<Landing />} exact />
+                    <Route path="/" element={<Landing paid={justPaid} onJustPaid={setJustPaid}/>} exact />
                     <Route path="/tutors" element={<Tutors onSelectTutor={setSelectedTutor} />} exact />
                     <Route path="/times" element={<Times tutor={selectedTutor} onSelectSlot = {setSelectedSlot}/>} exact />
                     <Route path="/signup" element={<Signup />} exact />
