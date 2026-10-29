@@ -2,15 +2,9 @@ import { AccountButton } from '../components/accountbutton';
 import React from 'react';
 import './times.css';
 import { NavLink, Link } from 'react-router-dom';
-
-function getDays(tutorId){
-    const availability = [{id: 1, day: 'Wed', date: 28, title: 'Wednesday, October 28', times : ['9:00 AM', '10:00 AM', '1:00 PM', '2:00 PM', '6:00 PM']},
-        {id: 2, day: 'Thu', date: 29, title: 'Thursday, October 29', times : ['9:00 AM', '10:00 AM', '1:00 PM', '4:00 PM']}
-        ];
-        return availability;
+import { getDays } from '../functions/getdays'; 
 
 
-}
 
 export function Times({ tutor, onSelectSlot, onLogout, user }) {
     const [days, setDays] = React.useState([]);

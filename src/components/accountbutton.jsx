@@ -24,6 +24,11 @@ export function AccountButton({ user, logout }) {
                         <li>
                             <button className="btn btn-primary rounded-pill book-button-space" onClick={handleLogout}>Log out</button>
                         </li>
+                        {user.isTutor && (
+                            <li>
+                                <NavLink to="/setavailability" className="back-link">Set my availability</NavLink>
+                            </li>
+                        )}
 
                     </ul>
                 </details>
