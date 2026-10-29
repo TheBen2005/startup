@@ -50,6 +50,7 @@ export function Times({ tutor, onSelectSlot, onLogout, user }) {
     if (user) {
         linkString = '/payment';
     }
+    const selectedIsOpen = chosenDay && chosenDay.times.includes(selectedTime);
 
     return (
         <>
