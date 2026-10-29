@@ -2,7 +2,8 @@ import { AccountButton } from '../components/accountbutton';
 import React from 'react';
 import './times.css';
 import { NavLink, Link } from 'react-router-dom';
-import { getDays } from '../functions/getdays'; 
+import { getDays } from '../functions/getdays';
+import { bookingNotifier } from '../functions/bookingNotifer';
 
 
 
@@ -10,33 +11,43 @@ export function Times({ tutor, onSelectSlot, onLogout, user }) {
     const [days, setDays] = React.useState([]);
     const [selectedDayID, setSelectedDayID] = React.useState(null);
     const [selectedTime, setSelectedTime] = React.useState(null);
-    
-    
+
+
 
 
     React.useEffect(() => {
         const daysResult = getDays(1);
         setDays(daysResult);
-        if(daysResult[0] != null){
+        if (daysResult[0] != null) {
             setSelectedDayID(daysResult[0].id);
         }
     }, []);
+    React.useEffect(() => {
+        const unsubscribe = bookingNotifier((booking) => {
+            setDays((currentDays) => currentDays.map((day) =>
+                day.id === booking.dayId
+                    ? { ...day, times: day.times.filter((t) => t !== booking.time) }
+                    : day
+            ));
+        });
+        return unsubscribe;
+    }, []);
     const chosenDay = days.find((day) => day.id === selectedDayID);
     let numTimes = 0;
-    if(chosenDay){
+    if (chosenDay) {
         numTimes = chosenDay.times.length;
     }
     let time = 'times';
-    if(numTimes === 1){
+    if (numTimes === 1) {
         time = 'time';
     }
     let tutorName = "";
-    if(tutor){
+    if (tutor) {
         tutorName = tutor.name;
 
     }
     let linkString = '/info';
-    if(user){
+    if (user) {
         linkString = '/payment';
     }
 
@@ -45,7 +56,7 @@ export function Times({ tutor, onSelectSlot, onLogout, user }) {
             <header>
                 <nav>
                     <NavLink to="/tutors" className="back-link">tutors</NavLink>
-                    <AccountButton user={user} logout={onLogout}/>
+                    <AccountButton user={user} logout={onLogout} />
                 </nav>
             </header>
             <main className="times-main">
@@ -55,25 +66,25 @@ export function Times({ tutor, onSelectSlot, onLogout, user }) {
                 <ul className="day-list">
                     {days.map((day) => (
                         <li key={day.id}>
-                            <button type='button' className='day-pill' aria-pressed={day.id === selectedDayID} onClick={() => {setSelectedDayID(day.id); setSelectedTime(null); }}>{day.day} <span>{day.date}</span></button>
+                            <button type='button' className='day-pill' aria-pressed={day.id === selectedDayID} onClick={() => { setSelectedDayID(day.id); setSelectedTime(null); }}>{day.day} <span>{day.date}</span></button>
                         </li>
                     ))}
                 </ul>
-                {chosenDay &&<h2 className="day-header">{chosenDay.title}</h2>}
+                {chosenDay && <h2 className="day-header">{chosenDay.title}</h2>}
                 <p className="open-count">{numTimes} {time} open</p>
                 {/* DATABASE DATA PLACEHOLDER. All of these times will be eventually available times for the tutor that are fetched from the database. */}
-                {chosenDay &&<ul className="slot-list">
-                    {chosenDay.times.map((time) => 
+                {chosenDay && <ul className="slot-list">
+                    {chosenDay.times.map((time) =>
                         <li key={time}>
-                            <button type='button' className='slot' aria-pressed={time === selectedTime} onClick={() => {setSelectedTime(time)}}>{time}</button>
+                            <button type='button' className='slot' aria-pressed={time === selectedTime} onClick={() => { setSelectedTime(time) }}>{time}</button>
                         </li>
-                    
+
                     )}
                 </ul>}
-                {selectedTime &&<div id="selection-bar" className="alert alert-success alert-dismissible text-start payment-complete" role="status">
+                {selectedIsOpen && <div id="selection-bar" className="alert alert-success alert-dismissible text-start payment-complete" role="status">
                     <p className="paid-success-color">{chosenDay.title} at {selectedTime}</p>
                     <p className="tutor-contact-message">60 minutes with {tutorName}</p>
-                    <Link to={linkString} className="btn btn-primary rounded-pill book-button-space" onClick={() => onSelectSlot({ day: chosenDay.title, time: selectedTime})}>Continue</Link>
+                    <Link to={linkString} className="btn btn-primary rounded-pill book-button-space" onClick={() => onSelectSlot({ day: chosenDay.title, time: selectedTime })}>Continue</Link>
                     {/* This eventually won't be present all of the time, but is a dynamic message that will appear at the bottom after a time is selected. */}
                 </div>}
 
