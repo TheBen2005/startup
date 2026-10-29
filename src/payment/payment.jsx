@@ -1,7 +1,40 @@
+import React from 'react';
 import './payment.css';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
-export function Payment() {
+export function Payment({ tutor, slot, contactInfo, onPaid}) {
+    const [paymentStatus, setPaymentStatus] = React.useState(false)
+    let paymentMessageButton = 'I paid';
+    let tutorName = '';
+    let slotDay = '';
+    let slotTime = '';
+    if(tutor){
+        tutorName = tutor.name;
+        
+    }
+    if(slot){
+        slotDay = slot.day;
+        slotTime = slot.time;
+    }
+
+    if(paymentStatus){
+        paymentMessageButton = 'Notifying ' + tutorName;
+        
+    }
+
+    // IMPORTANT: 3RD PARTY SERVICE CALL. This will be replaced with a call to my server, which sends the email to me through a third party service, most likely resend.
+    function sendPaymentEmail(booking) {
+        return new Promise((resolve) => {
+            setTimeout(resolve, 1600);
+        });
+
+        async function handlePaid() {
+            setPaymentStatus(true);
+            await sendPaymentEmail({ tutor, slot, contactInfo });
+            onPaid();
+            navigate('/');
+}
+    }
     return (
         <>
             <header>
@@ -12,7 +45,7 @@ export function Payment() {
             </header>
             <main className="payment-main">
                 {/* This message below saying "Monday Sep 22 at 1:00pm with Ben 1 hour", will be dynamic and based on the tutor, time selected, and date */}
-                <p className="booking-summary">Monday Sep 22 at 1:00 PM with Ben 1 hour</p>
+                <p className="booking-summary">{slotDay} at {slotTime} with {tutorName} 1 hour</p>
                 <h1 className="payment-h1">Pay with <span className="title-italics">Venmo</span></h1>
                 <p className="intro-text">Scan the code with your phone's camera, send the amount below, then tap I paid.</p>
                 {/* DATABASE DATA PLACEHOLDER. The image displaying the venmo qr code will eventually be pulled from the database for the venmo of the correct tutor rather than being hard coded.*/}
@@ -21,10 +54,10 @@ export function Payment() {
                     <p className="money-amount">$60</p>
                     <p className="where-payment">to @ben-tutoring</p>
                 </div>
-                <form action="/" className="payment-form">
-                    <button type="submit" className="btn btn-primary btn-lg rounded-pill book-button-space w-100">I Paid</button>
-                </form>
-                {/* IMPORTANT: 3RD PARTY SERVICE CALL This button is very important. This button will trigger an email to be sent to me with the information the user provided (external API). I will most likely use resend.com to accomplish this. */}
+                <div className="payment-form">
+                    <button type="button" className="btn btn-primary btn-lg rounded-pill book-button-space w-100" disabled={paymentStatus} onClick={() => setPaymentStatus(true)}>{paymentMessageButton}</button>
+                </div>
+                
 
 
             </main>

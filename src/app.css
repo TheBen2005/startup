@@ -71,6 +71,9 @@ nav {
     --bs-btn-hover-bg: var(--color-btn-primary-bg-hover);
     --bs-btn-hover-color: var(--color-bg);
     --bs-btn-hover-border-color: var(--color-btn-primary-border-hover);
+    --bs-btn-disabled-bg: var(--color-btn-primary-color);
+    --bs-btn-disabled-border-color: var(--color-btn-primary-color);
+    --bs-btn-disabled-color: var(--color-bg);
 
 }
 

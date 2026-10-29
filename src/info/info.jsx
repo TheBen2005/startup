@@ -34,7 +34,7 @@ export function Info({tutor, slot, onSubmitInfo}) {
             </header>
             <main className='info-main'>
                 {/* This message below saying "Monday Sep 22 at 1:00pm with Ben 1 hour", will be dynamic and based on the tutor, time selected, and date */}
-                <p className="booking-summary">{slotDay} at 1:00 PM with {tutorName} {slotTime}</p>
+                <p className="booking-summary">{slotDay} at {slotTime} with {tutorName} {slotTime}</p>
                 <h1>Your <span className="title-italics">details</span></h1>
                 <form onSubmit={handleSubmit}>
                     <div>
@@ -54,7 +54,7 @@ export function Info({tutor, slot, onSubmitInfo}) {
                         <input type="tel" placeholder="555-652-9282" id="number" name="number" className="form-control" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} />
                     </div>
                     <p className="appointment-text">Only used for appointment reminders.</p>
-                    <button type="submit" className="btn btn-primary btn-lg rounded-pill book-button-space w-100">Continue to payment</button>
+                    <button type="submit" className="btn btn-primary btn-lg rounded-pill book-button-space w-100" disabled={!firstName || !lastName || !email || !phoneNumber}>Continue to payment</button>
                 </form>
 
             </main>
