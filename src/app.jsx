@@ -12,7 +12,7 @@ import { Login } from './login/login';
 import { Info } from './info/info';
 
 export default function App() {
-    const [user, setUser] = React.useState(JSON.parse(localStorage.getItem('user')));
+    const [user, setUser] = React.useState(JSON.parse(localStorage.getItem('user')) || '');
     const [selectedTutor, setSelectedTutor] = React.useState(null);
     const [selectedSlot, setSelectedSlot] = React.useState(null);
     const [contactInfo, setContactInfo] = React.useState(null);
@@ -25,7 +25,7 @@ export default function App() {
                     <Route path="/" element={<Landing paid={justPaid} onJustPaid={setJustPaid}/>} exact />
                     <Route path="/tutors" element={<Tutors onSelectTutor={setSelectedTutor} />} exact />
                     <Route path="/times" element={<Times tutor={selectedTutor} onSelectSlot = {setSelectedSlot}/>} exact />
-                    <Route path="/signup" element={<Signup />} exact />
+                    <Route path="/signup" element={<Signup onSignUp={setUser}/>} exact />
                     <Route path="/setavailability" element={<SetAvailability />} exact />
                     <Route path="/payment" element={<Payment tutor={selectedTutor} slot={selectedSlot} contactInfo={contactInfo} onPaid={() => setJustPaid(true)}/>} exact />
                     <Route path="/login" element={<Login onLogin={setUser}/>} exact />
