@@ -19,3 +19,9 @@
 * I learned about CSS leakage. When all imports are imported through app.jsx, every component used the CSS from every page making some pages designs intercept parts of designs of other pages. I fixed this by wrapping all of the main elements in each component with a class and sepcifying each CSS class to be under the correct main class.
 * Node.js allows javascript to run on my computer instead of just the browser, vite turns my code into code that can be understood by the browser
 * I also learned the basics of react. The main things to remember right now are components (reusable chunks of JSX) and state (what react components to use to rerender the component and update the UI)
+
+## Startup React P2: Reactivity
+* I learned of important react Hooks which fire off after the initial render of the component and whenever the value placed in [] changes. If there is no value in brackets, use effect just fires off after the first render.
+* I learned how to share state between many components. IMPORTANT: WHen sharing state between multiple components that are using the same data, the shared state and update of state can be given to the nearest common ancestor and have the ancestor pass the state down as props.
+* I overall sharpened my skills with react and Javascript
+* Learned the order events occur of a react component. React component renders, useffect fires off after render. When state is changed, react component rerenders with new state.
