@@ -2,10 +2,17 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 export function AccountButton({ user, logout }) {
-    function handleLogout(){
+    async function handleLogout(endpoint) {
+        const response = await fetch(endpoint, {
+            method: 'post',
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        });
+
         localStorage.removeItem('user');
         logout(null);
-        
+
     }
     if (!user) {
         return (
@@ -22,7 +29,7 @@ export function AccountButton({ user, logout }) {
                             <NavLink to="/" className="back-link">Home</NavLink>
                         </li>
                         <li>
-                            <button className="btn btn-primary rounded-pill book-button-space" onClick={handleLogout}>Log out</button>
+                            <button className="btn btn-primary rounded-pill book-button-space" onClick={() => handleLogout(`/api/auth/logout`)}>Log out</button>
                         </li>
                         {user.isTutor && (
                             <li>
