@@ -1,6 +1,7 @@
 import React from 'react';
 import './login.css';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
+import { LoginOrSignup } from '../functions/loginorsignup';
 
 export function Login({ onLogin }) {
     const [email, setEmail] = React.useState('');
@@ -17,13 +18,35 @@ export function Login({ onLogin }) {
         };
         localStorage.setItem('user', JSON.stringify(user));
         onLogin(user);
-        if(user.isTutor){
+        if (user.isTutor) {
             navigate('/setavailability');
         }
-        else{
+        else {
             navigate('/');
         }
-}
+    }
+
+    async function LoginOrSignup({ endpoint }) {
+        const response = await fetch(endpoint, {
+            method: 'post',
+            body: JSON.stringify({ email: email, password: password }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        });
+        if (response?.status === 200) {
+            localStorage.setItem('userName', userName);
+            onLogin(userName);
+        } else {
+            const body = await response.json();
+            setDisplayError(`⚠ Error: ${body.msg}`);
+        }
+
+
+
+
+    }
+
     return (
         <>
             <header>
@@ -38,13 +61,13 @@ export function Login({ onLogin }) {
                     {/* Currently logging in sends the user to the set availability page. In the future, users who are not tutors will be taken to the home page with their name on the top right, while tutors will be taken to this page. */}
                     <div>
                         <label htmlFor="email" className="form-label">Email address</label>
-                        <input type="email" placeholder="example.email@outlook.com" id="email" name="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)}/>
+                        <input type="email" placeholder="example.email@outlook.com" id="email" name="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} />
                     </div>
                     <div>
                         <label htmlFor="password" className="form-label">Password</label>
-                        <input type="password" placeholder="********" id="password" name="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)}/>
+                        <input type="password" placeholder="********" id="password" name="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} />
                     </div>
-                    <button type="submit" className="btn btn-primary btn-lg rounded-pill book-button-space w-100" disabled={!email || !password}>Log in</button>
+                    <button type="submit" className="btn btn-primary btn-lg rounded-pill book-button-space w-100" onClick={() => LoginOrSignup(`/api/auth/login`)} disabled={!email || !password}>Log in</button>
                 </form>
                 <p className="need-account">Need an account?<span><Link to="/signup" className="sign-up-link"> Sign up</Link></span></p>
 
