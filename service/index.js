@@ -7,6 +7,10 @@ const app = express();
 const authCookieName = 'token';
 
 let users = [];
+let tutors = [{id: 1, name: 'Ben', score: 1390, test: 'SAT', image: '/suitimage.jpg'},
+        {id: 2, name: 'Matt', score: 34, test: 'ACT', image: '/suitimage.jpg'}
+
+    ];
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
@@ -44,6 +48,10 @@ apiRouter.post('/auth/logout', async (req, res) => {
   }
   res.clearCookie(authCookieName);
   res.status(204).end();
+});
+
+apiRouter.get('/auth/tutors', async (req, res) => {
+  res.send(tutors);
 });
 
 async function createUser(email, password, firstName, lastName) {

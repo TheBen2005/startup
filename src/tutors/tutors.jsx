@@ -4,12 +4,20 @@ import './tutors.css';
 import { NavLink, Link } from 'react-router-dom';
 import {TutorCard} from './tutorcard';
 
-function getTutors() {
-    const tutors = [{id: 1, name: 'Ben', score: 1390, test: 'SAT', image: '/suitimage.jpg'},
-        {id: 2, name: 'Matt', score: 34, test: 'ACT', image: '/suitimage.jpg'}
-
-    ];
-    return tutors;
+async function getTutors(endpoint) {
+    const response = await fetch(endpoint, {
+            method: 'get',
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        });
+        if (response?.status === 200) {
+            return tutors;
+        } 
+        else {
+            const body = await response.json();
+            setDisplayError(`⚠ Error: ${body.msg}`);
+        }
 
 }
 
@@ -17,7 +25,7 @@ export function Tutors({ onSelectTutor, onLogout, user }) {
     const [tutors, setTutors] = React.useState([]);
 
     React.useEffect(() => {
-        const tutorsResult = getTutors();
+        const tutorsResult = getTutors(`/api/auth/tutors`);
         setTutors(tutorsResult);
     }, []);
     
