@@ -27,6 +27,27 @@ export function Signup({ onSignUp }) {
         }
     }
 
+    async function LoginOrSignup({ endpoint }) {
+        const response = await fetch(endpoint, {
+            method: 'post',
+            body: JSON.stringify({ email: email, password: password, firstName: firstName, lastName: lastName }),
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        });
+        if (response?.status === 200) {
+            localStorage.setItem('userName', userName);
+            onSignUp(userName);
+        } else {
+            const body = await response.json();
+            setDisplayError(`⚠ Error: ${body.msg}`);
+        }
+
+
+
+
+    }
+
     return (
         <>
             <header>
@@ -40,21 +61,21 @@ export function Signup({ onSignUp }) {
                 <form onSubmit={handleSubmit}>
                     <div>
                         <label htmlFor="firstName" className="form-label">First name</label>
-                        <input type="text" placeholder="Ben" id="firstName" name="firstName" className="form-control" value={firstName} onChange={(e) => setFirstName(e.target.value) }/>
+                        <input type="text" placeholder="Ben" id="firstName" name="firstName" className="form-control" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
                     </div>
                     <div>
                         <label htmlFor="lastName" className="form-label">Last name</label>
-                        <input type="text" placeholder="Myers" id="lastName" name="lastName" className="form-control" value={lastName} onChange={(e) => setLastName(e.target.value) }/>
+                        <input type="text" placeholder="Myers" id="lastName" name="lastName" className="form-control" value={lastName} onChange={(e) => setLastName(e.target.value)} />
                     </div>
                     <div>
                         <label htmlFor="email" className="form-label">Email address</label>
-                        <input type="email" placeholder="example.email@outlook.com" id="email" name="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value) }/>
+                        <input type="email" placeholder="example.email@outlook.com" id="email" name="email" className="form-control" value={email} onChange={(e) => setEmail(e.target.value)} />
                     </div>
                     <div>
                         <label htmlFor="password" className="form-label">Password</label>
-                        <input type="password" placeholder="********" id="password" name="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value) }/>
+                        <input type="password" placeholder="********" id="password" name="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} />
                     </div>
-                    <button type="submit" className="btn btn-primary btn-lg rounded-pill book-button-space w-100" disabled={!email || !password || !lastName || !firstName}>Sign Up</button>
+                    <button type="submit" className="btn btn-primary btn-lg rounded-pill book-button-space w-100" onClick={() => LoginOrSignup(`/api/auth/signup`)} disabled={!email || !password || !lastName || !firstName}>Sign Up</button>
                 </form>
                 <p className="have-account"> Already have an account?<span><Link to="/login" className="log-in-link"> Login</Link></span></p>
 

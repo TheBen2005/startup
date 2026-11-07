@@ -1,7 +1,6 @@
 import React from 'react';
 import './login.css';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
-import { LoginOrSignup } from '../functions/loginorsignup';
 
 export function Login({ onLogin }) {
     const [email, setEmail] = React.useState('');

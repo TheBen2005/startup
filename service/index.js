@@ -26,6 +26,33 @@ apiRouter.post('/auth/login', async (req, res) => {
   res.status(401).send({ msg: 'Unauthorized' });
 });
 
+apiRouter.post('/auth/signup', async (req, res) => {
+  if (await findUser('email', req.body.email)) {
+    res.status(409).send({ msg: 'Existing user' });
+  } else {
+    const user = await createUser(req.body.email, req.body.password, req.body.firstName, req.body.lastName);
+
+    setAuthCookie(res, user.token);
+    res.send({ email: user.email });
+  }
+});
+
+async function createUser(email, password, firstName, lastName) {
+  const passwordHash = await bcrypt.hash(password, 10);
+
+  const user = {
+    email: email,
+    password: passwordHash,
+    firstName: firstName,
+    lastName: lastName,
+
+    token: uuid.v4(),
+  };
+  users.push(user);
+
+  return user;
+}
+
 async function findUser(field, value) {
   if (!value) return null;
 
