@@ -7,8 +7,8 @@ const app = express();
 const authCookieName = 'token';
 
 let users = [];
-let tutors = [{id: 1, name: 'Ben', score: 1390, test: 'SAT', image: '/suitimage.jpg'},
-        {id: 2, name: 'Matt', score: 34, test: 'ACT', image: '/suitimage.jpg'}
+let tutors = [{id: 1, name: 'Ben', score: 1390, test: 'SAT', image: '/suitimage.jpg', days: [{id: 1, day: 'Wed', date: 28, title: 'Wednesday, October 28', times: ['9:00 AM', '1:00 PM', '2:00 PM', '6:00 PM'] }] },
+        {id: 2, name: 'Matt', score: 34, test: 'ACT', image: '/suitimage.jpg', days: [{id: 2, day: 'Thu', date: 29, title: 'Thursday, October 29', times: ['9:00 AM', '10:00 AM', '1:00 PM', '4:00 PM'] }] }
 
     ];
 
@@ -16,6 +16,14 @@ const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
+const verifyAuth = async (req, res, next) => {
+  const user = await findUser('token', req.cookies[authCookieName]);
+  if (user) {
+    next();
+  } else {
+    res.status(401).send({ msg: 'Unauthorized' });
+  }
+};
 
 apiRouter.post('/auth/login', async (req, res) => {
   const user = await findUser('email', req.body.email);
@@ -53,6 +61,16 @@ apiRouter.post('/auth/logout', async (req, res) => {
 apiRouter.get('/auth/tutors', async (req, res) => {
   res.send(tutors);
 });
+
+apiRouter.get('/auth/days', async (req, res) => {
+  const tutor = tutors.find((t) => t.id === req.body.tutorId));
+  if (tutor) {
+    const days = tutor.days;
+    res.send({days: days});
+  }
+  res.status(401).send({ msg: 'tutor does not exist' });
+
+
 
 async function createUser(email, password, firstName, lastName) {
   const passwordHash = await bcrypt.hash(password, 10);

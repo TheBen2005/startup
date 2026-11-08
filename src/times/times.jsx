@@ -16,7 +16,7 @@ export function Times({ tutor, onSelectSlot, onLogout, user }) {
 
 
     React.useEffect(() => {
-        const daysResult = getDays(1);
+        const daysResult = getDays(tutor.id, `/api/auth/days`);
         setDays(daysResult);
         if (daysResult[0] != null) {
             setSelectedDayID(daysResult[0].id);
