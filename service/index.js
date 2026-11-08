@@ -5,12 +5,14 @@ const uuid = require('uuid');
 const app = express();
 
 const authCookieName = 'token';
+const TUTOR_EMAIL = 'bensfakeemail@outlook.com';
 
 let users = [];
-let tutors = [{id: 1, name: 'Ben', score: 1390, test: 'SAT', image: '/suitimage.jpg', days: [{id: 1, day: 'Wed', date: 28, title: 'Wednesday, October 28', times: ['9:00 AM', '1:00 PM', '2:00 PM', '6:00 PM'] }] },
-        {id: 2, name: 'Matt', score: 34, test: 'ACT', image: '/suitimage.jpg', days: [{id: 2, day: 'Thu', date: 29, title: 'Thursday, October 29', times: ['9:00 AM', '10:00 AM', '1:00 PM', '4:00 PM'] }] }
+let bookings = [];
+let tutors = [{ id: 1, name: 'Ben', score: 1390, test: 'SAT', image: '/suitimage.jpg', days: [{ id: 1, day: 'Wed', date: 28, title: 'Wednesday, October 28', times: ['9:00 AM', '1:00 PM', '2:00 PM', '6:00 PM'] }] },
+{ id: 2, name: 'Matt', score: 34, test: 'ACT', image: '/suitimage.jpg', days: [{ id: 2, day: 'Thu', date: 29, title: 'Thursday, October 29', times: ['9:00 AM', '10:00 AM', '1:00 PM', '4:00 PM'] }] }
 
-    ];
+];
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
@@ -64,11 +66,51 @@ apiRouter.get('/auth/tutors', async (req, res) => {
 
 apiRouter.get('/auth/days', async (req, res) => {
   const tutor = tutors.find((t) => t.id === req.body.tutorId));
-  if (tutor) {
-    const days = tutor.days;
-    res.send({days: days});
+if (tutor) {
+  const days = tutor.days;
+  res.send({ days: days });
+}
+res.status(401).send({ msg: 'tutor does not exist' });
+
+apiRouter.put('/availability', verifyAuth, async (req, res) => {
+  const user = await findUser('token', req.cookies[authCookieName]);
+  if (!user.tutorId) {
+    res.status(403).send({ msg: 'Only tutors can set availability' });
+    return;
   }
-  res.status(401).send({ msg: 'tutor does not exist' });
+  const tutor = tutors.find((t) => t.id === user.tutorId);
+  tutor.days = req.body.days;
+  res.send(tutor.days);
+});
+
+apiRouter.post('/booking', async (req, res) => {
+  const { tutorId, dayId, time, contactInfo } = req.body;
+
+  const tutor = tutors.find((t) => t.id === tutorId);
+  if (!tutor) {
+    res.status(404).send({ msg: 'Tutor not found' });
+    return;
+  }
+
+  const day = tutor.days.find((d) => d.id === dayId);
+  if (!day) {
+    res.status(404).send({ msg: 'Day not found' });
+    return;
+  }
+
+  if (!day.times.includes(time)) {
+    res.status(409).send({ msg: 'That time was just booked' });
+    return;
+  }
+
+  day.times = day.times.filter((t) => t !== time);
+
+  const booking = { tutorId, dayId, time, contactInfo };
+  bookings.push(booking);
+  
+
+  res.send(booking);
+});
 
 
 
@@ -80,6 +122,7 @@ async function createUser(email, password, firstName, lastName) {
     password: passwordHash,
     firstName: firstName,
     lastName: lastName,
+    tutorId: email === TUTOR_EMAIL ? 1 : null,
 
     token: uuid.v4(),
   };
