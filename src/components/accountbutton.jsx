@@ -3,16 +3,12 @@ import { NavLink } from 'react-router-dom';
 
 export function AccountButton({ user, logout }) {
     async function handleLogout(endpoint) {
-        const response = await fetch(endpoint, {
-            method: 'post',
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        });
-
+        try {
+            await fetch(endpoint, { method: 'POST' });
+        } catch {
+        }
         localStorage.removeItem('user');
         logout(null);
-
     }
     if (!user) {
         return (

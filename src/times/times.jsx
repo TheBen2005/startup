@@ -12,16 +12,20 @@ export function Times({ tutor, onSelectSlot, onLogout, user }) {
     const [selectedDayID, setSelectedDayID] = React.useState(null);
     const [selectedTime, setSelectedTime] = React.useState(null);
 
-
-
-
     React.useEffect(() => {
-        const daysResult = getDays(tutor.id, `/api/auth/days`);
-        setDays(daysResult);
-        if (daysResult[0] != null) {
-            setSelectedDayID(daysResult[0].id);
+        if (!tutor) {
+            return;
         }
+        async function loadDays() {
+            const daysResult = await getDays(tutor.id);
+            setDays(daysResult);
+            if (daysResult.length > 0) {
+                setSelectedDayID(daysResult[0].id);
+            }
+        }
+        loadDays();
     }, []);
+
     React.useEffect(() => {
         const unsubscribe = bookingNotifier((booking) => {
             setDays((currentDays) => currentDays.map((day) =>

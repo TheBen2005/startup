@@ -29,11 +29,17 @@ export function SetAvailability({ user, onLogout }) {
     }
 
     React.useEffect(() => {
-        const daysResult = getDays(1);
-        setDays(daysResult);
-        if (daysResult.length > 0) {
-            setSelectedDayID(daysResult[0].id);
+        if (!tutor) {
+            return;
         }
+        async function loadDays() {
+            const daysResult = await getDays(tutor.id);
+            setDays(daysResult);
+            if (daysResult.length > 0) {
+                setSelectedDayID(daysResult[0].id);
+            }
+        }
+        loadDays();
     }, []);
 
     React.useEffect(() => {
@@ -61,8 +67,8 @@ export function SetAvailability({ user, onLogout }) {
     }
 
     if (!user || !user.isTutor) {
-    return <Navigate to="/" replace />;
-}
+        return <Navigate to="/" replace />;
+    }
 
 
     return (

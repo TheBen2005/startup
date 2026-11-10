@@ -5,28 +5,19 @@ import { NavLink, Link } from 'react-router-dom';
 import {TutorCard} from './tutorcard';
 
 async function getTutors(endpoint) {
-    const response = await fetch(endpoint, {
-            method: 'get',
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        });
-        if (response?.status === 200) {
-            return tutors;
-        } 
-        else {
-            const body = await response.json();
-            setDisplayError(`⚠ Error: ${body.msg}`);
-        }
-
+    const response = await fetch(endpoint);
+    return response.json();
 }
 
 export function Tutors({ onSelectTutor, onLogout, user }) {
     const [tutors, setTutors] = React.useState([]);
 
     React.useEffect(() => {
-        const tutorsResult = getTutors(`/api/auth/tutors`);
-        setTutors(tutorsResult);
+        async function loadTutors() {
+            const tutorsResult = await getTutors('/api/tutors');
+            setTutors(tutorsResult);
+        }
+        loadTutors();
     }, []);
     
     return (
