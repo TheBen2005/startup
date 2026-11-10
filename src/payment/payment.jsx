@@ -2,8 +2,9 @@ import React from 'react';
 import './payment.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { AccountButton } from '../components/accountbutton';
+import { sendBookingEmail } from '../functions/sendbookingemail';
 
-export function Payment({ tutor, slot, contactInfo, onPaid, onLogout, user}) {
+export function Payment({ tutor, slot, contactInfo, onPaid, onLogout, user }) {
     const [paymentStatus, setPaymentStatus] = React.useState(false)
     const [error, setError] = React.useState('');
     let paymentMessageButton = 'I paid';
@@ -11,18 +12,18 @@ export function Payment({ tutor, slot, contactInfo, onPaid, onLogout, user}) {
     let slotDay = '';
     let slotTime = '';
     const navigate = useNavigate();
-    if(tutor){
+    if (tutor) {
         tutorName = tutor.name;
-        
+
     }
-    if(slot){
+    if (slot) {
         slotDay = slot.day;
         slotTime = slot.time;
     }
 
-    if(paymentStatus){
+    if (paymentStatus) {
         paymentMessageButton = 'Notifying ' + tutorName;
-        
+
     }
 
     async function createBooking(booking) {
@@ -34,27 +35,49 @@ export function Payment({ tutor, slot, contactInfo, onPaid, onLogout, user}) {
         return response;
     }
 
-    
+
 
     async function handlePaid() {
         setPaymentStatus(true);
-        await sendPaymentEmail({ tutor, slot, contactInfo });
-        onPaid();
-        navigate('/');
+        setError('');
+        let bookingContact = contactInfo;
+        if (!bookingContact && user) {
+            bookingContact = { firstName: user.firstName, email: user.email };
+        }
+        const response = await createBooking({
+            tutorId: tutor.id,
+            dayId: slot.dayId,
+            time: slot.time,
+            contactInfo: bookingContact,
+        });
+        if (response.status === 200) {
+            try {
+                await sendBookingEmail(tutor.name, slot, bookingContact);
+            } catch {
+                
+            }
+            onPaid();
+            navigate('/');
+        } else {
+            const body = await response.json();
+            setError(body.msg);
+            setPaymentStatus(false);
+        }
     }
+
     let linkString = '/info';
     let linkMessage = 'details';
-    if(user){
-        linkString = '/times'
-        linkMessage = 'times'
-    }
+    if (user) {
+        linkString = '/times';
+        linkMessage = 'times';
+}
 
     return (
         <>
             <header>
                 <nav>
                     <NavLink to={linkString} className="back-link">{linkMessage}</NavLink>
-                    <AccountButton user={user} logout={onLogout}/>
+                    <AccountButton user={user} logout={onLogout} />
                 </nav>
             </header>
             <main className="payment-main">
@@ -69,9 +92,10 @@ export function Payment({ tutor, slot, contactInfo, onPaid, onLogout, user}) {
                     <p className="where-payment">to @ben-tutoring</p>
                 </div>
                 <div className="payment-form">
-                    <button type="button" className="btn btn-primary btn-lg rounded-pill book-button-space w-100" disabled={paymentStatus} onClick={handlePaid}>{paymentMessageButton}</button>
+                    <button type="button" className="btn btn-primary btn-lg rounded-pill book-button-space w-100" disabled={paymentStatus || !tutor || !slot} onClick={handlePaid}>{paymentMessageButton}</button>
+                    {error && <p className="text-danger" role="alert">{error}</p>}
                 </div>
-                
+
 
 
             </main>
