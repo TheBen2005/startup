@@ -5,6 +5,7 @@ import { AccountButton } from '../components/accountbutton';
 
 export function Payment({ tutor, slot, contactInfo, onPaid, onLogout, user}) {
     const [paymentStatus, setPaymentStatus] = React.useState(false)
+    const [error, setError] = React.useState('');
     let paymentMessageButton = 'I paid';
     let tutorName = '';
     let slotDay = '';
@@ -24,12 +25,16 @@ export function Payment({ tutor, slot, contactInfo, onPaid, onLogout, user}) {
         
     }
 
-    // IMPORTANT: 3RD PARTY SERVICE CALL. This will be replaced with a call to my server, which sends the email to me through a third party service, most likely resend.
-    function sendPaymentEmail(booking) {
-        return new Promise((resolve) => {
-            setTimeout(resolve, 1600);
+    async function createBooking(booking) {
+        const response = await fetch('/api/booking', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(booking),
         });
+        return response;
     }
+
+    
 
     async function handlePaid() {
         setPaymentStatus(true);

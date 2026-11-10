@@ -8,11 +8,12 @@ export function SetAvailability({ user, onLogout }) {
     const [days, setDays] = React.useState([]);
     const [selectedDayID, setSelectedDayID] = React.useState(null);
     const [saved, setSaved] = React.useState(false);
+    const [saveError, setSaveError] = React.useState('');
 
 
     const ALL_HOURS = ['8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM'];
 
-    const BOOKED = [{ dayId: 1, time: '10:00 AM', student: 'Jordan' }];
+    const [bookings, setBookings] = React.useState([]);
 
     function toggleHour(hour) {
         setSaved(false);
@@ -29,14 +30,15 @@ export function SetAvailability({ user, onLogout }) {
     }
 
     React.useEffect(() => {
-        if (!tutor) {
-            return;
-        }
         async function loadDays() {
-            const daysResult = await getDays(tutor.id);
+            const daysResult = await getDays(1);
             setDays(daysResult);
             if (daysResult.length > 0) {
                 setSelectedDayID(daysResult[0].id);
+            }
+            const response = await fetch('/api/bookings');
+            if (response.status === 200) {
+                setBookings(await response.json());
             }
         }
         loadDays();
@@ -55,11 +57,21 @@ export function SetAvailability({ user, onLogout }) {
     let bookedCount = 0;
     if (chosenDay) {
         openCount = chosenDay.times.length;
-        bookedCount = BOOKED.filter((b) => b.dayId === chosenDay.id).length;
+        bookedCount = bookings.filter((b) => b.dayId === chosenDay.id).length;
     }
-    function handleSave() {
-        localStorage.setItem('availability', JSON.stringify(days));
-        setSaved(true);
+    async function handleSave() {
+        setSaveError('');
+        const response = await fetch('/api/availability', {
+            method: 'PUT',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({ days: days }),
+        });
+        if (response.status === 200) {
+            setSaved(true);
+        } else {
+            const body = await response.json();
+            setSaveError(body.msg);
+        }
     }
     let saveText = "Save"
     if (saved) {
@@ -94,9 +106,9 @@ export function SetAvailability({ user, onLogout }) {
                 <p className="open-count">{openCount} open · {bookedCount} booked</p>
                 {chosenDay && <ul className="slot-list">
                     {ALL_HOURS.map((hour) => {
-                        const booking = BOOKED.find((b) => b.dayId === chosenDay.id && b.time === hour);
+                        const booking = bookings.find((b) => b.dayId === chosenDay.id && b.time === hour);
                         if (booking) {
-                            return <li key={hour}><p className="slot-taken">{hour} · Booked · {booking.student}</p></li>;
+                            return <li key={hour}><p className="slot-taken">{hour} · Booked · {booking.contactInfo?.firstName || 'Student'}</p></li>;
                         }
                         const isOpen = chosenDay.times.includes(hour);
                         return (
@@ -107,6 +119,7 @@ export function SetAvailability({ user, onLogout }) {
                     })}
                 </ul>}
                 <button type="button" className="btn btn-primary rounded-pill save-button" onClick={handleSave} disabled={saved}>{saveText}</button>
+                {saveError && <p className="text-danger" role="alert">{saveError}</p>}
 
             </main>
         </>
