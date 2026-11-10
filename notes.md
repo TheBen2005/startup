@@ -25,3 +25,9 @@
 * I learned how to share state between many components. IMPORTANT: WHen sharing state between multiple components that are using the same data, the shared state and update of state can be given to the nearest common ancestor and have the ancestor pass the state down as props.
 * I overall sharpened my skills with react and Javascript
 * Learned the order events occur of a react component. React component renders, useffect fires off after render. When state is changed, react component rerenders with new state.
+
+## Service
+* POST requests insert data, GET fetches data, and PUT modifies data
+* While I have had a long time of experience now working full stack, this strengthened my full stack skills.
+* General flow: Something happens in front end (example: button pressed) and upon this happening function is called. The function called makes an HTTP request to the back end whether that be our own server or an external API. If necessary we hand content in the request either in the body or the URL. The back end then recieves the request and the contents, if any, and runs its server logic. Queries database and returns data back and status of request. Front end recieves data and updates state accordingly
+* New learning: package.json has recording of code packages. package-lock.json has exact the exact receipts. Node modules is very long and contains all of the actual code in these packages.

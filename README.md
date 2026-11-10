@@ -80,3 +80,11 @@ For this deliverable I:
 * Correctly used Use effect and state to make my web page dynamic and mock functionality. Used useffect on pages such as tutors, time, and payment to mock API call. Used use effect in to reset saved state. Used state throughout every component in my application and shared state in App.
 * My image for Matt with his score, which is my brother, is still just of me. I do not have a good picture of him and will likely replace this picture later
 * My startup domain is available at [startup.benstutors.com](https://startup.benstutors.com/)
+
+## Service Deliverable
+For this deliverable I:
+* Created login, Sign up and logout endpoints. Signup endpoint checks if user already exists and if they do not it creates them as a user with their password stored as a hash. Logout endpoint clears the users cookie in the browser and removes their authentication token. Login checks if the user exists and if they exist it compares the password in the request hashed to the hashed password stored in the users array (which will soon be the database). All changes update state in front end accordingly including errors to log in.
+* Incorporated other endpoints necessary to complete application. Tutors endpoint to fetch information for tutor cards. Availabilty endpoint so me, the tutor, can update my availability. The new available times and days will then be displayed for students. Booking endpoint to insert booking infromation in bookings array which will later be in database. bookings endpoint to make some times booked on tutors availability. Tutor/tutorid/days endpoint to grab correct days and time for tutor. All changes update state in front end accordingly including the errors.
+* Third party API call to email.JS in sendbookingemail.js file to send me emails notifying me of bookings and student information so I can send them my zoom details. I tested it and confirmed it works!
+* The set availabilty endpoint requires an auth token to verify the user exists. It then searches the array (database soon) and finds the user with the matching authentication token and finds if they are a tutor or not.
+* Verify Auth is middleware used to verify user is authenticated.
