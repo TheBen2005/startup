@@ -37,7 +37,7 @@ apiRouter.post('/auth/login', async (req, res) => {
     if (await bcrypt.compare(req.body.password, user.password)) {
       user.token = uuid.v4();
       setAuthCookie(res, user.token);
-      res.send({ email: user.email });
+      res.send({ email: user.email, firstName: user.firstName, isTutor: user.tutorId !== null });
       return;
     }
   }
@@ -51,7 +51,8 @@ apiRouter.post('/auth/signup', async (req, res) => {
     const user = await createUser(req.body.email, req.body.password, req.body.firstName, req.body.lastName);
 
     setAuthCookie(res, user.token);
-    res.send({ email: user.email });
+    res.send({ email: user.email, firstName: user.firstName, isTutor: user.tutorId !== null });
+
   }
 });
 
@@ -64,17 +65,19 @@ apiRouter.post('/auth/logout', async (req, res) => {
   res.status(204).end();
 });
 
-apiRouter.get('/auth/tutors', async (req, res) => {
+apiRouter.get('/tutors', async (req, res) => {
   res.send(tutors);
 });
 
-apiRouter.get('/auth/days', async (req, res) => {
-  const tutor = tutors.find((t) => t.id === req.body.tutorId));
-if (tutor) {
+apiRouter.get('/tutors/:tutorId/days', async (req, res) => {
+  const tutor = tutors.find((t) => t.id === Number(req.params.tutorId));
+  if (!tutor) {
+    res.status(404).send({ msg: 'Tutor not found' });
+    return;
+  }
   const days = tutor.days;
-  res.send({ days: days });
-}
-res.status(401).send({ msg: 'tutor does not exist' });
+  res.send(days);
+});
 
 apiRouter.put('/availability', verifyAuth, async (req, res) => {
   const user = await findUser('token', req.cookies[authCookieName]);

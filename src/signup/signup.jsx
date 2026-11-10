@@ -7,46 +7,32 @@ export function Signup({ onSignUp }) {
     const [lastName, setLastName] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
-    const TUTOR_EMAIL = 'bensfakeemail@outlook.com';
+    const [error, setError] = React.useState('');
     const navigate = useNavigate();
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
-        const user = {
-            firstName: firstName,
-            email: email,
-            isTutor: email === TUTOR_EMAIL
-        };
-        localStorage.setItem('user', JSON.stringify(user));
-        onSignUp(user);
-        if (user.isTutor) {
-            navigate('/setavailability');
-        }
-        else {
-            navigate('/');
-        }
-    }
-
-    async function LoginOrSignup({ endpoint }) {
-        const response = await fetch(endpoint, {
-            method: 'post',
+        const response = await fetch('/api/auth/signup', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
             body: JSON.stringify({ email: email, password: password, firstName: firstName, lastName: lastName }),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
         });
-        if (response?.status === 200) {
-            localStorage.setItem('userName', userName);
-            onSignUp(userName);
+        if (response.status === 200) {
+            const user = await response.json();
+            localStorage.setItem('user', JSON.stringify(user));
+            onSignUp(user);
+            if (user.isTutor) {
+                navigate('/setavailability');
+            } else {
+                navigate('/');
+            }
         } else {
             const body = await response.json();
-            setDisplayError(`⚠ Error: ${body.msg}`);
+            setError(body.msg);
         }
-
-
-
-
     }
+
+
 
     return (
         <>
@@ -75,7 +61,8 @@ export function Signup({ onSignUp }) {
                         <label htmlFor="password" className="form-label">Password</label>
                         <input type="password" placeholder="********" id="password" name="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} />
                     </div>
-                    <button type="submit" className="btn btn-primary btn-lg rounded-pill book-button-space w-100" onClick={() => LoginOrSignup(`/api/auth/signup`)} disabled={!email || !password || !lastName || !firstName}>Sign Up</button>
+                    <button type="submit" className="btn btn-primary btn-lg rounded-pill book-button-space w-100" disabled={!email || !password || !lastName || !firstName}>Sign Up</button>
+                    {error && <p className="text-danger" role="alert">{error}</p>}
                 </form>
                 <p className="have-account"> Already have an account?<span><Link to="/login" className="log-in-link"> Login</Link></span></p>
 

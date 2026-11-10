@@ -5,46 +5,31 @@ import { NavLink, Link, useNavigate } from 'react-router-dom';
 export function Login({ onLogin }) {
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
-    const TUTOR_EMAIL = 'bensfakeemail@outlook.com';
+    const [error, setError] = React.useState('');
     const navigate = useNavigate();
 
-    function handleSubmit(e) {
-        e.preventDefault();
-        const user = {
-            firstName: email.split('@')[0],
-            email: email,
-            isTutor: email === TUTOR_EMAIL
-        };
+    async function handleSubmit(e) {
+    e.preventDefault();
+    const response = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ email: email, password: password }),
+    });
+    if (response.status === 200) {
+        const user = await response.json();
         localStorage.setItem('user', JSON.stringify(user));
         onLogin(user);
         if (user.isTutor) {
             navigate('/setavailability');
-        }
-        else {
+        } else {
             navigate('/');
         }
+    } else {
+        const body = await response.json();
+        setError(body.msg);
     }
+}
 
-    async function LoginOrSignup({ endpoint }) {
-        const response = await fetch(endpoint, {
-            method: 'post',
-            body: JSON.stringify({ email: email, password: password }),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        });
-        if (response?.status === 200) {
-            localStorage.setItem('userName', userName);
-            onLogin(userName);
-        } else {
-            const body = await response.json();
-            setDisplayError(`⚠ Error: ${body.msg}`);
-        }
-
-
-
-
-    }
 
     return (
         <>
@@ -66,7 +51,8 @@ export function Login({ onLogin }) {
                         <label htmlFor="password" className="form-label">Password</label>
                         <input type="password" placeholder="********" id="password" name="password" className="form-control" value={password} onChange={(e) => setPassword(e.target.value)} />
                     </div>
-                    <button type="submit" className="btn btn-primary btn-lg rounded-pill book-button-space w-100" onClick={() => LoginOrSignup(`/api/auth/login`)} disabled={!email || !password}>Log in</button>
+                    <button type="submit" className="btn btn-primary btn-lg rounded-pill book-button-space w-100" disabled={!email || !password}>Log in</button>
+                    {error && <p className="text-danger" role="alert">{error}</p>}
                 </form>
                 <p className="need-account">Need an account?<span><Link to="/signup" className="sign-up-link"> Sign up</Link></span></p>
 
