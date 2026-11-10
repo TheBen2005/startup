@@ -88,3 +88,4 @@ For this deliverable I:
 * Third party API call to email.JS in sendbookingemail.js file to send me emails notifying me of bookings and student information so I can send them my zoom details. I tested it and confirmed it works!
 * The set availabilty endpoint requires an auth token to verify the user exists. It then searches the array (database soon) and finds the user with the matching authentication token and finds if they are a tutor or not.
 * Verify Auth is middleware used to verify user is authenticated.
+* My startup domain is available at [startup.benstutors.com](https://startup.benstutors.com/)
