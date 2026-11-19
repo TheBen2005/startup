@@ -87,7 +87,7 @@ apiRouter.put('/availability', verifyAuth, async (req, res) => {
     res.status(403).send({ msg: 'Only tutors can set availability' });
     return;
   }
-  const tutor = tutors.find((t) => t.id === user.tutorId);
+  const tutor = await DB.getTutor(req.params.tutorId);
   tutor.days = req.body.days;
   res.send(tutor.days);
 });
@@ -95,7 +95,7 @@ apiRouter.put('/availability', verifyAuth, async (req, res) => {
 apiRouter.post('/booking', async (req, res) => {
   const { tutorId, dayId, time, contactInfo } = req.body;
 
-  const tutor = tutors.find((t) => t.id === tutorId);
+  const tutor = await DB.getTutor(tutorId);
   if (!tutor) {
     res.status(404).send({ msg: 'Tutor not found' });
     return;
