@@ -55,6 +55,10 @@ async function updateTutorDays(days){
     
 }
 
+function getTutors() {
+  return tutorCollection.find().toArray();
+}
+
 module.exports = {
   updateUser,
   addUser,
@@ -63,5 +67,6 @@ module.exports = {
   updateUserRemoveAuth,
   getTutor,
   getTutorbyName,
-  updateTutorDays
+  updateTutorDays,
+  getTutors,
 };

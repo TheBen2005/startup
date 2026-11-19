@@ -70,6 +70,7 @@ apiRouter.post('/auth/logout', async (req, res) => {
 });
 
 apiRouter.get('/tutors', async (req, res) => {
+  const tutors = await DB.getTutors();
   res.send(tutors);
 });
 
