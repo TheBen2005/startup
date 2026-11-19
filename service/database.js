@@ -26,3 +26,6 @@ function getUser(email) {
 function getUserByToken(token) {
   return userCollection.findOne({ token: token });
 }
+async function updateUserRemoveAuth(user) {
+  await userCollection.updateOne({ email: user.email }, { $unset: { token: 1 } });
+}
