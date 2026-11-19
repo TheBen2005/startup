@@ -90,9 +90,8 @@ apiRouter.put('/availability', verifyAuth, async (req, res) => {
     res.status(403).send({ msg: 'Only tutors can set availability' });
     return;
   }
-  const tutor = await DB.getTutorbyName(user.tutor, req.body.days);
-  tutor.days = req.body.days;
-  res.send(tutor.days);
+  await DB.updateTutorDays(user.tutorId, req.body.days);
+  res.send(req.body.days);
 });
 
 apiRouter.post('/booking', async (req, res) => {
@@ -114,12 +113,11 @@ apiRouter.post('/booking', async (req, res) => {
     res.status(409).send({ msg: 'That time was just booked' });
     return;
   }
-
   day.times = day.times.filter((t) => t !== time);
+  await DB.updateTutorDays(tutorId, tutor.days);
 
   const booking = { tutorId, dayId, time, contactInfo };
-  bookings.push(booking);
-
+  await DB.addBooking(booking);
 
   res.send(booking);
 });
@@ -130,7 +128,8 @@ apiRouter.get('/bookings', verifyAuth, async (req, res) => {
     res.status(403).send({ msg: 'Only tutors can see bookings' });
     return;
   }
-  res.send(bookings.filter((b) => b.tutorId === user.tutorId));
+  const bookings = await DB.getBookings(user.tutorId);
+  res.send(bookings);
 });
 
 app.use(function (err, req, res, next) {

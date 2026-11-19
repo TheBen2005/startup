@@ -5,6 +5,7 @@ const client = new MongoClient(url);
 const db = client.db('benstutors');
 const userCollection = db.collection('user');
 const tutorCollection = db.collection('tutor');
+const bookingCollection = db.collection('booking');
 
 const tutor_one = { id: 1, name: 'Ben', score: 1390, test: 'SAT', image: '/suitimage.jpg', days: [{ id: 1, day: 'Wed', date: 28, title: 'Wednesday, October 28', times: ['9:00 AM', '1:00 PM', '2:00 PM', '6:00 PM'] }] };
 const tutor_two = { id: 2, name: 'Matt', score: 34, test: 'ACT', image: '/suitimage.jpg', days: [{ id: 2, day: 'Thu', date: 29, title: 'Thursday, October 29', times: ['9:00 AM', '10:00 AM', '1:00 PM', '4:00 PM'] }] };
@@ -59,6 +60,13 @@ function getTutors() {
   return tutorCollection.find().toArray();
 }
 
+async function addBooking(booking) {
+  await bookingCollection.insertOne(booking);
+}
+function getBookings(tutorId) {
+  return bookingCollection.find({ tutorId: tutorId }).toArray();
+}
+
 module.exports = {
   updateUser,
   addUser,
@@ -69,4 +77,6 @@ module.exports = {
   getTutorbyName,
   updateTutorDays,
   getTutors,
+  addBooking,
+  getBookings
 };
