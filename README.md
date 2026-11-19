@@ -89,3 +89,9 @@ For this deliverable I:
 * The set availabilty endpoint requires an auth token to verify the user exists. It then searches the array (database soon) and finds the user with the matching authentication token and finds if they are a tutor or not.
 * Verify Auth is middleware used to verify user is authenticated.
 * My startup domain is available at [startup.benstutors.com](https://startup.benstutors.com/)
+
+## DB/Login Deliverable
+For this deliverable I:
+* Completed prerequisites for deliverable including all of the readings.
+* Made all my back end functions query my Mongo Database rather than data structures in memory. This includes storing tutors in a tutor collection, storing users in a user collection, fetching users from collection both by token and by email, Updating user to remove authentication, adding bookings, updating available tutor times, fetching all tutors in collection for tutor page, fetching tutor by Id, and everything necessary for my application. These Database queries are called by my back end functions in index.js and the queries themselves are in database.js.
+* My startup domain is available at [startup.benstutors.com](https://startup.benstutors.com/)

@@ -31,3 +31,8 @@
 * While I have had a long time of experience now working full stack, this strengthened my full stack skills.
 * General flow: Something happens in front end (example: button pressed) and upon this happening function is called. The function called makes an HTTP request to the back end whether that be our own server or an external API. If necessary we hand content in the request either in the body or the URL. The back end then recieves the request and the contents, if any, and runs its server logic. Queries database and returns data back and status of request. Front end recieves data and updates state accordingly
 * New learning: package.json has recording of code packages. package-lock.json has exact the exact receipts. Node modules is very long and contains all of the actual code in these packages.
+
+## DB
+* I learned of the difference between mySQL and a Mongo Database. 
+* Mongo Databases are flexible in shape and data lives in collections which are JSON like objects whereas mySQL has data organized into tables
+* Mongo is often better when wanting rapid development and having data that is not very connected
