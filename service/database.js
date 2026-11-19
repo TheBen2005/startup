@@ -4,7 +4,7 @@ const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostna
 const client = new MongoClient(url);
 const db = client.db('simon');
 const userCollection = db.collection('user');
-const scoreCollection = db.collection('score');
+const tutorCollection = db.collection('tutor');
 
 (async function testConnection() {
   try {
@@ -28,4 +28,7 @@ function getUserByToken(token) {
 }
 async function updateUserRemoveAuth(user) {
   await userCollection.updateOne({ email: user.email }, { $unset: { token: 1 } });
+}
+async function getTutor(tutorId) {
+    return tutorCollection.findOne({ id: Number(tutorId) });
 }

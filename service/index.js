@@ -72,7 +72,7 @@ apiRouter.get('/tutors', async (req, res) => {
 });
 
 apiRouter.get('/tutors/:tutorId/days', async (req, res) => {
-  const tutor = tutors.find((t) => t.id === Number(req.params.tutorId));
+  const tutor = await DB.getTutor(req.params.tutorId);
   if (!tutor) {
     res.status(404).send({ msg: 'Tutor not found' });
     return;
