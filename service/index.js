@@ -1,8 +1,3 @@
-const { MongoClient } = require('mongodb');
-const config = require('./dbConfig.json');
-const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
-
-
 
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
@@ -160,7 +155,7 @@ async function createUser(email, password, firstName, lastName) {
 
     token: uuid.v4(),
   };
-  users.push(user);
+  await DB.addUser(user);
 
   return user;
 }
