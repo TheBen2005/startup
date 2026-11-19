@@ -23,6 +23,7 @@ app.use(express.static('public'));
 
 var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
+
 const verifyAuth = async (req, res, next) => {
   const user = await findUser('token', req.cookies[authCookieName]);
   if (user) {
@@ -115,7 +116,7 @@ apiRouter.post('/booking', async (req, res) => {
 
   const booking = { tutorId, dayId, time, contactInfo };
   bookings.push(booking);
-  
+
 
   res.send(booking);
 });
@@ -163,7 +164,10 @@ async function createUser(email, password, firstName, lastName) {
 async function findUser(field, value) {
   if (!value) return null;
 
-  return users.find((u) => u[field] === value);
+  if (field === 'token') {
+    return DB.getUserByToken(value);
+  }
+  return DB.getUser(value);
 }
 
 function setAuthCookie(res, authToken) {
