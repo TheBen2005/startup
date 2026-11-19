@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const express = require('express');
 const uuid = require('uuid');
 const app = express();
+const DB = require('./database.js');
 
 const authCookieName = 'token';
 const TUTOR_EMAIL = 'bensfakeemail@outlook.com';
@@ -88,7 +89,7 @@ apiRouter.put('/availability', verifyAuth, async (req, res) => {
     res.status(403).send({ msg: 'Only tutors can set availability' });
     return;
   }
-  const tutor = await DB.getTutor(req.params.tutorId);
+  const tutor = await DB.getTutorbyName(user.firstName);
   tutor.days = req.body.days;
   res.send(tutor.days);
 });

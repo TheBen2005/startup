@@ -2,7 +2,7 @@ const { MongoClient } = require('mongodb');
 const config = require('./dbConfig.json');
 const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
 const client = new MongoClient(url);
-const db = client.db('simon');
+const db = client.db('benstutors');
 const userCollection = db.collection('user');
 const tutorCollection = db.collection('tutor');
 
@@ -39,4 +39,10 @@ async function updateUserRemoveAuth(user) {
 }
 async function getTutor(tutorId) {
     return tutorCollection.findOne({ id: Number(tutorId) });
+}
+async function getTutorbyName(name) {
+    return tutorCollection.findOne({ name: name });
+}
+async function updateTutorDays(days){
+    
 }
