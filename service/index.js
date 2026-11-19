@@ -90,7 +90,7 @@ apiRouter.put('/availability', verifyAuth, async (req, res) => {
     res.status(403).send({ msg: 'Only tutors can set availability' });
     return;
   }
-  const tutor = await DB.getTutorbyName(user.firstName);
+  const tutor = await DB.getTutorbyName(user.tutor, req.body.days);
   tutor.days = req.body.days;
   res.send(tutor.days);
 });

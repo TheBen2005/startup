@@ -51,8 +51,8 @@ async function getTutor(tutorId) {
 async function getTutorbyName(name) {
     return tutorCollection.findOne({ name: name });
 }
-async function updateTutorDays(days){
-    
+async function updateTutorDays(tutorId, days) {
+  await tutorCollection.updateOne({ id: tutorId }, { $set: { days: days } });
 }
 
 function getTutors() {
